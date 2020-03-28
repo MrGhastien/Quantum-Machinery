@@ -45,6 +45,7 @@ public class QuantumMachinery {
 		ModContainers.CONTAINERS.register(modEventBus);
 		ModTileEntities.TILES.register(modEventBus);
 		ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+		
 	}
 	
 	public static ResourceLocation location(String name) {
