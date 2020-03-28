@@ -1,0 +1,13 @@
+{
+    "parent": "block/cube_all",
+    "textures": 
+    {
+        "particle": "quantum_machinery:block/blaster_top",
+		"up": "quantum_machinery:block/blaster_top",
+		"down": "quantum_machinery:block/blaster_top",
+		"east": "quantum_machinery:block/blaster_side",
+		"west": "quantum_machinery:block/blaster_side",
+		"north": "quantum_machinery:block/refinery_front",
+		"south": "quantum_machinery:block/blaster_side"
+    }
+}

@@ -1,0 +1,74 @@
+{
+    "multipart": [
+		{ "when" : {"energy_transfer_mode" : "sending"},
+		"apply": { "model": "quantum_machinery:block/connector_center" }
+		},
+		{ "when" : {"energy_transfer_mode" : "recieving"},
+		"apply": { "model": "quantum_machinery:block/connector_center_recieving" }
+		},
+
+		{ "when" : { "AND" : [{"north" : "cable" }, {"energy_transfer_mode" : "sending"}]},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : -90}
+		},
+		{ "when" : { "AND" : [{"north" : "cable" }, {"energy_transfer_mode" : "recieving"}]},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : -90}
+		},
+		
+		{ "when" : { "AND" : [{"north" : "machine" }, {"energy_transfer_mode" : "sending"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm", "x" : -90}
+		},
+		{ "when" : { "AND" : [{"north" : "machine" }, {"energy_transfer_mode" : "recieving"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm_recieving", "x" : -90}
+		},
+		
+		{ "when" : {"south" : "cable"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90}
+		},
+		{ "when" : { "AND" : [{"south" : "machine" }, {"energy_transfer_mode" : "sending"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm", "x" : 90}
+		},
+		{ "when" : { "AND" : [{"south" : "machine" }, {"energy_transfer_mode" : "recieving"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm_recieving", "x" : 90}
+		},
+		
+		{ "when" : {"east" : "cable"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90, "y" : -90}
+		},
+		{ "when" : { "AND" : [{"east" : "machine" }, {"energy_transfer_mode" : "sending"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm", "x" : 90, "y" : -90}
+		},
+		{ "when" : { "AND" : [{"east" : "machine" }, {"energy_transfer_mode" : "recieving"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm_recieving", "x" : 90, "y" : -90}
+		},
+		
+		{ "when" : {"west" : "cable"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90, "y" : 90}
+		},
+		{ "when" : { "AND" : [{"west" : "machine" }, {"energy_transfer_mode" : "sending"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm", "x" : 90, "y" : 90}
+		},
+		{ "when" : { "AND" : [{"west" : "machine" }, {"energy_transfer_mode" : "recieving"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm_recieving", "x" : 90, "y" : 90}
+		},
+		
+		{ "when" : {"up" : "cable"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 180}
+		},
+		{ "when" : { "AND" : [{"up" : "machine" }, {"energy_transfer_mode" : "sending"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm", "x" : 180}
+		},
+		{ "when" : { "AND" : [{"up" : "machine" }, {"energy_transfer_mode" : "recieving"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm_recieving", "x" : 180}
+		},
+		
+		{ "when" : {"down" : "cable"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm"}
+		},
+		{ "when" : { "AND" : [{"down" : "machine"}, {"energy_transfer_mode" : "sending"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm"}
+		},
+		{ "when" : { "AND" : [{"down" : "machine" }, {"energy_transfer_mode" : "recieving"}]},
+		"apply" : { "model": "quantum_machinery:block/connector_arm_recieving"}
+		}
+	]
+}

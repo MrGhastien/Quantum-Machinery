@@ -1,0 +1,13 @@
+modLoader="javafml" #mandatory
+loaderVersion="[28,)" #mandatory (24 is current forge version)
+
+[[mods]] #mandatory
+modId="quantum_machinery" #mandatory
+version="0.4.8" #mandatory
+displayName="Quantum Machinery" #mandatory
+displayURL="" #optional
+credits="lul" #optional
+authors="MrGhastien" #optional
+description='''
+A tiny mod
+'''

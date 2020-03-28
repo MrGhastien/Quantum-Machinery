@@ -1,0 +1,17 @@
+{
+  "type": "astral_manipulation:atom_refining",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:obsidian",
+      "count": 4
+    }
+  ],
+  "result": {
+    "item": "astral_manipulation:dense_compound"
+  },
+  "energyUsage": 150,
+  "ticks": 120
+}

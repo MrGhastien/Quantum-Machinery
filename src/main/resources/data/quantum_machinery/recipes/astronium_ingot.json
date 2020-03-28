@@ -1,0 +1,18 @@
+{
+  "type": "quantum_machinery:refining",
+  "ingredients": [
+    {
+      "item": "quantum_machinery:space_compound",
+	  "count": 4
+    },
+    {
+      "item": "minecraft:redstone",
+	  "count": 2
+    }
+  ],
+  "result": {
+    "item": "quantum_machinery:astronium_ingot"
+  },
+  "energyUsage": 300,
+  "ticks": 480
+}

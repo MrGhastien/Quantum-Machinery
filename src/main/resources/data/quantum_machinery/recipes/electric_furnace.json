@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" B ",
+		"SCS",
+		"TTT"
+	],
+	
+	"key":
+	{
+		"T" : {"item": "minecraft:smooth_stone"},
+		"B" : {"item": "minecraft:furnace"},
+		"S" : {"item": "quantum_machinery:screw"},
+		"C" : {"item": "quantum_machinery:machine_casing"}
+	},
+	"result": {"item":"quantum_machinery:electric_furnace"}
+}

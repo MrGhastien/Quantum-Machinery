@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north,powered=false": { "model": "quantum_machinery:block/electric_furnace" },
+    "facing=south,powered=false": { "model": "quantum_machinery:block/electric_furnace", "y": 180 },
+    "facing=west,powered=false": { "model": "quantum_machinery:block/electric_furnace", "y": 270 },
+    "facing=east,powered=false": { "model": "quantum_machinery:block/electric_furnace", "y": 90 },
+    "facing=up,powered=false": { "model": "quantum_machinery:block/electric_furnace", "x": -90 },
+    "facing=down,powered=false": { "model": "quantum_machinery:block/electric_furnace", "x": 90 },
+    "facing=north,powered=true": { "model": "quantum_machinery:block/electric_furnace_powered" },
+    "facing=south,powered=true": { "model": "quantum_machinery:block/electric_furnace_powered", "y": 180 },
+    "facing=west,powered=true": { "model": "quantum_machinery:block/electric_furnace_powered", "y": 270 },
+    "facing=east,powered=true": { "model": "quantum_machinery:block/electric_furnace_powered", "y": 90 },
+    "facing=up,powered=true": { "model": "quantum_machinery:block/electric_furnace_powered", "x": -90 },
+    "facing=down,powered=true": { "model": "quantum_machinery:block/electric_furnace_powered", "x": 90 }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north,powered=false": { "model": "quantum_machinery:block/refinery" },
+    "facing=south,powered=false": { "model": "quantum_machinery:block/refinery", "y": 180 },
+    "facing=west,powered=false": { "model": "quantum_machinery:block/refinery", "y": 270 },
+    "facing=east,powered=false": { "model": "quantum_machinery:block/refinery", "y": 90 },
+    "facing=up,powered=false": { "model": "quantum_machinery:block/refinery", "x": -90 },
+    "facing=down,powered=false": { "model": "quantum_machinery:block/refinery", "x": 90 },
+    "facing=north,powered=true": { "model": "quantum_machinery:block/refinery_powered" },
+    "facing=south,powered=true": { "model": "quantum_machinery:block/refinery_powered", "y": 180 },
+    "facing=west,powered=true": { "model": "quantum_machinery:block/refinery_powered", "y": 270 },
+    "facing=east,powered=true": { "model": "quantum_machinery:block/refinery_powered", "y": 90 },
+    "facing=up,powered=true": { "model": "quantum_machinery:block/refinery_powered", "x": -90 },
+    "facing=down,powered=true": { "model": "quantum_machinery:block/refinery_powered", "x": 90 }
+  }
+}

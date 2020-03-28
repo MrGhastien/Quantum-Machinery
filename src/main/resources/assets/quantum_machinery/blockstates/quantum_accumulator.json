@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "quantum_machinery:block/quantum_accumulator" },
+    "facing=south": { "model": "quantum_machinery:block/quantum_accumulator", "y": 180 },
+    "facing=west": { "model": "quantum_machinery:block/quantum_accumulator", "y": 270 },
+    "facing=east": { "model": "quantum_machinery:block/quantum_accumulator", "y": 90 },
+    "facing=up": { "model": "quantum_machinery:block/quantum_accumulator", "x": -90 },
+    "facing=down": { "model": "quantum_machinery:block/quantum_accumulator", "x": 90 }
+  }
+}

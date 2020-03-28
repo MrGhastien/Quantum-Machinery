@@ -1,0 +1,23 @@
+{
+    "multipart": [
+        {"apply": { "model": "quantum_machinery:block/cable_center" }},
+		{ "when" : {"north" : "true"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : -90}
+		},
+		{ "when" : {"south" : "true"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90}
+		},
+		{ "when" : {"east" : "true"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90, "y" : -90}
+		},
+		{ "when" : {"west" : "true"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90, "y" : 90}
+		},
+		{ "when" : {"up" : "true"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 180}
+		},
+		{ "when" : {"down" : "true"},
+		"apply" : { "model": "quantum_machinery:block/cable_arm"}
+		}
+	]
+}

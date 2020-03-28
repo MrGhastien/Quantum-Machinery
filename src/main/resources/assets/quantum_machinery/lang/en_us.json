@@ -1,0 +1,49 @@
+{
+	"item.quantum_machinery.astronium_ingot": "Astronium Ingot",
+	"item.quantum_machinery.antimatter_dust": "Antimatter dust",
+	"item.quantum_machinery.polzrite": "Polzrite",
+	"item.quantum_machinery.rediamond":"Redstone Covered Diamond",
+	"item.quantum_machinery.space_compound": "Space Compound",
+	"item.quantum_machinery.dense_compound": "Dense Compound",
+	"item.quantum_machinery.conductive_compound": "Conductive Compound",
+	"item.quantum_machinery.wrench":"Wrench",
+	"item.quantum_machinery.screw":"Screw",
+	"item.quantum_machinery.machine_casing":"Machine Casing",
+	"item.quantum_machinery.battery":"Battery",
+	
+	"item.quantum_machinery.astronium_axe": "Astronium Axe",
+	"item.quantum_machinery.astronium_pickaxe": "Astronium Pickaxe",
+	"item.quantum_machinery.astronium_hoe": "Astronium Hoe",
+	"item.quantum_machinery.astronium_shovel": "Astronium Shovel",
+	"item.quantum_machinery.astronium_sword": "Astronium Sword",
+	
+	"item.quantum_machinery.astronium_helmet": "Astronium Helmet",
+	"item.quantum_machinery.astronium_chestplate": "Astronium Chestplate",
+	"item.quantum_machinery.astronium_leggings": "Astronium Leggings",
+	"item.quantum_machinery.astronium_boots": "Astronium Boots",
+	
+	"item.quantum_machinery.test_entity_egg": "Spawn Space cow",
+	"item.quantum_machinery.guard_entity_egg":"Spawn Villager Guard",
+	
+	"block.quantum_machinery.astronium_block": "Astronium Block",
+	"block.quantum_machinery.polzrite_ore": "Polzrite ore",
+	"block.quantum_machinery.blaster": "Blaster",
+	"block.quantum_machinery.quantum_accumulator": "Quantum Accumulator",
+	"block.quantum_machinery.cable":"Basic Cable",
+	"block.quantum_machinery.connector":"Basic Connector",
+	"block.quantum_machinery.refinery":"Refinery",
+	"block.quantum_machinery.electric_furnace":"Electric Furnace",
+	
+	"entity.quantum_machinery.test_entity": "Space cow",
+	"entity.quantum_machinery.villager_guard": "Villager Guard",
+	
+	"container.quantum_accumulator.name": "Quantum Accumulator",
+	
+	"multiblock.fission_reactor.running.name": "Running",
+	"multiblock.fission_reactor.stopped.name" : "Stopped",
+	"multiblock.fission_reactor.inserting.name": "Inserting...",
+		
+	"itemGroup.testGroup": "Main Stuff",
+	
+	"death.attack.desintegrated": "%s has been desintegrated"
+}

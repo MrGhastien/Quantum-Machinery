@@ -1,0 +1,13 @@
+{
+    "parent": "block/cube_all",
+    "textures": 
+    {
+        "particle": "quantum_machinery:block/fission/casing_unformed",
+		"up": "quantum_machinery:block/fission/rod_controller_top",
+		"down": "quantum_machinery:block/fission/rod_controller_top",
+		"east": "quantum_machinery:block/fission/casing_unformed",
+		"west": "quantum_machinery:block/fission/casing_unformed",
+		"north": "quantum_machinery:block/fission/casing_unformed",
+		"south": "quantum_machinery:block/fission/casing_unformed"
+    }
+}

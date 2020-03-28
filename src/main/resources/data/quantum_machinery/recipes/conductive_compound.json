@@ -1,0 +1,17 @@
+{
+  "type": "quantum_machinery:refining",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 6
+    }
+  ],
+  "result": {
+    "item": "quantum_machinery:conductive_compound"
+  },
+  "energyUsage": 150,
+  "ticks": 120
+}

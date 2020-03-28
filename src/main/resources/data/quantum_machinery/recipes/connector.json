@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SSS",
+		"CRC",
+		"SSS"
+	],
+	
+	"key":
+	{
+		"R" : {"item": "minecraft:redstone_block"},
+		"S" : {"item" : "quantum_machinery:dense_compound"},
+		"C" : {"item" : "quantum_machinery:conductive_compound"}
+	},
+	"result": {"item":"quantum_machinery:connector", "count" : 2}
+}

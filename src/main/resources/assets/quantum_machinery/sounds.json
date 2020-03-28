@@ -1,0 +1,8 @@
+{
+  "ancient_music": {
+    "category": "player",
+    "sounds": [
+        "quantum_machinery:ancient_music"
+    ]
+  }
+}

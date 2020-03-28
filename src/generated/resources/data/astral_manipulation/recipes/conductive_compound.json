@@ -1,0 +1,17 @@
+{
+  "type": "astral_manipulation:atom_refining",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 6
+    }
+  ],
+  "result": {
+    "item": "astral_manipulation:conductive_compound"
+  },
+  "energyUsage": 150,
+  "ticks": 120
+}

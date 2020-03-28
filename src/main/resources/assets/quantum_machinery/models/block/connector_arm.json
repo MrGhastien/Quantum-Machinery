@@ -1,0 +1,35 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "quantum_machinery:block/cable/connector_segment",
+		"1": "quantum_machinery:block/blaster_top"
+	},
+	"elements": [
+		{
+			"name": "connector_2",
+			"from": [5, 0, 5],
+			"to": [11, 1, 11],
+			"faces": {
+				"north": {"uv": [5, 0, 8, 16], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [5, 0, 8, 16], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [5, 0, 8, 16], "rotation": 270, "texture": "#1"},
+				"west": {"uv": [5, 0, 8, 16], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "cable",
+			"from": [6, 1, 6],
+			"to": [10, 5, 10],
+			"faces": {
+				"north": {"uv": [6, 6, 10, 10], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [6, 6, 10, 10], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [6, 6, 10, 10], "rotation": 90, "texture": "#0"},
+				"west": {"uv": [6, 6, 10, 10], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [6, 6, 10, 10], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [6, 6, 10, 10], "texture": "#0"}
+			}
+		}
+	]
+}

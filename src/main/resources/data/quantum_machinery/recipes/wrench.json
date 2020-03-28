@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" S",
+		"WI",
+		" I"
+	],
+	
+	"key":
+	{
+		"I" : {"item": "minecraft:iron_ingot"},
+		"S" : {"item" : "quantum_machinery:space_compound"},
+		"W" : {"item" : "quantum_machinery:screw"}
+	},
+	"result": {"item":"quantum_machinery:wrench"}
+}

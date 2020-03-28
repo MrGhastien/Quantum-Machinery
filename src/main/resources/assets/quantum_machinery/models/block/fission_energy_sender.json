@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": 
+    {
+        "all" : "quantum_machinery:block/fission/energy_outlet"
+    }
+}
