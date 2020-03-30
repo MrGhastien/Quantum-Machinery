@@ -100,7 +100,7 @@ public class BlasterTile extends MachineTile {
 		if (workTimer < maxTimer && canProduce() && getProd() > 0) {
 			workTimer++;
 			temp.ifPresent(t -> {
-				((TempHandler) t).heat(getProd(), false);
+				((TempHandler) t).heat(getProd() / 30d, false);
 			});
 			energy.ifPresent(e -> ((ModEnergyStorage) e).generateEnergy(getProd(), false));
 			markDirty();

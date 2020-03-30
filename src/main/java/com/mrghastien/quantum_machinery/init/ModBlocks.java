@@ -25,7 +25,7 @@ public class ModBlocks {
 	public static final RegistryObject<Block> ASTRONIUM_BLOCK = BLOCKS.register("astronium_block", () -> new Block(
 			Block.Properties.create(Material.IRON).hardnessAndResistance(5, 20).sound(SoundType.METAL)));
 	
-	public static final RegistryObject<Block> POLZRITE_ORE = BLOCKS.register("polzrite_ore",() -> new Block(
+	public static final RegistryObject<Block> CATERIUM_ORE = BLOCKS.register("caterium_ore",() -> new Block(
 			Block.Properties.create(Material.ROCK).hardnessAndResistance(7, 40).sound(SoundType.STONE)
 					.harvestLevel(4).harvestTool(ToolType.PICKAXE)));
 	
@@ -43,8 +43,4 @@ public class ModBlocks {
 	public static final RegistryObject<Block> FISSION_ROD_CONTROLLER = BLOCKS.register("fission_rod_controller", FissionPartBlock::new);
 	public static final RegistryObject<Block> FISSION_GLASS = BLOCKS.register("fission_glass", FissionPartBlock::new);
 	public static final RegistryObject<Block> MAGNETIC_MODULE = BLOCKS.register("magnetic_module", FissionPartBlock::new);
-	
-	public static final Block constructor = null;
-	
-	public static final Block wpt = null;
 }

@@ -19,7 +19,7 @@ public class OreGeneration {
 			biome.addFeature(Decoration.UNDERGROUND_ORES,
 					Feature.ORE
 							.withConfiguration(new OreFeatureConfig(FillerBlockType.NATURAL_STONE,
-									ModBlocks.POLZRITE_ORE.get().getDefaultState(), 5))
+									ModBlocks.CATERIUM_ORE.get().getDefaultState(), 5))
 							.func_227228_a_(Placement.COUNT_RANGE.func_227446_a_(polzrite_ore_placement)));
 		}
 	}

@@ -29,7 +29,7 @@ public class ModItems {
 	//Matériaux
 	public static final RegistryObject<Item> ASTRONIUM_INGOT = ITEMS.register("astronium_ingot", () -> new AstroniumIngotItem(new Item.Properties().group(MAIN_TAB).rarity(Rarity.UNCOMMON))); 
 	public static final RegistryObject<Item> ANTIMATTER_DUST = ITEMS.register("antimatter_dust", () -> new WeirdDustItem(new Item.Properties().group(MAIN_TAB).food(ModFoods.ASTRONIUM_FOOD).rarity(Rarity.UNCOMMON))); 
-	public static final RegistryObject<Item> POLZRITE = ITEMS.register("polzrite", () -> new Item(ItemUtils.DEFAULT_PROPERTIES)); 
+	public static final RegistryObject<Item> CATERIUM = ITEMS.register("caterium", () -> new Item(ItemUtils.DEFAULT_PROPERTIES)); 
 	public static final RegistryObject<Item> RED_DIAMOND = ITEMS.register("red_diamond", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
 	public static final RegistryObject<Item> SPACE_COMPOUND = ITEMS.register("space_compound", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
 	public static final RegistryObject<Item> SCREW = ITEMS.register("screw", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
