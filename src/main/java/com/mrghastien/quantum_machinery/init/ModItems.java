@@ -5,7 +5,7 @@ import static com.mrghastien.quantum_machinery.setup.ModSetup.MAIN_TAB;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.items.AstroniumIngotItem;
 import com.mrghastien.quantum_machinery.items.BatteryItem;
-import com.mrghastien.quantum_machinery.items.WeirdDustItem;
+import com.mrghastien.quantum_machinery.items.AntiMatterDustItem;
 import com.mrghastien.quantum_machinery.items.WrenchItem;
 import com.mrghastien.quantum_machinery.util.ItemUtils;
 
@@ -28,13 +28,15 @@ public class ModItems {
 	
 	//Matériaux
 	public static final RegistryObject<Item> ASTRONIUM_INGOT = ITEMS.register("astronium_ingot", () -> new AstroniumIngotItem(new Item.Properties().group(MAIN_TAB).rarity(Rarity.UNCOMMON))); 
-	public static final RegistryObject<Item> ANTIMATTER_DUST = ITEMS.register("antimatter_dust", () -> new WeirdDustItem(new Item.Properties().group(MAIN_TAB).food(ModFoods.ASTRONIUM_FOOD).rarity(Rarity.UNCOMMON))); 
-	public static final RegistryObject<Item> CATERIUM = ITEMS.register("caterium", () -> new Item(ItemUtils.DEFAULT_PROPERTIES)); 
+	public static final RegistryObject<Item> ANTIMATTER_DUST = ITEMS.register("antimatter_dust", () -> new AntiMatterDustItem(new Item.Properties().group(MAIN_TAB).food(ModFoods.ASTRONIUM_FOOD).rarity(Rarity.UNCOMMON))); 
+	public static final RegistryObject<Item> CATERIUM_INGOT = ITEMS.register("caterium_ingot", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
+	public static final RegistryObject<Item> CATERIUM_NUGGET = ITEMS.register("caterium_nugget", () -> new Item(ItemUtils.DEFAULT_PROPERTIES)); 
 	public static final RegistryObject<Item> RED_DIAMOND = ITEMS.register("red_diamond", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
 	public static final RegistryObject<Item> SPACE_COMPOUND = ITEMS.register("space_compound", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
 	public static final RegistryObject<Item> SCREW = ITEMS.register("screw", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
 	public static final RegistryObject<Item> MACHINE_CASING = ITEMS.register("machine_casing", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
-	public static final RegistryObject<Item> CONDUCTIVE_COMPOUND = ITEMS.register("conductive_compound", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
+	public static final RegistryObject<Item> HCC_INGOT = ITEMS.register("hcc_ingot", () -> new Item(ItemUtils.DEFAULT_PROPERTIES.rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> HCC_NUGGET = ITEMS.register("hcc_nugget", () -> new Item(ItemUtils.DEFAULT_PROPERTIES.rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> DENSE_COMPOUND = ITEMS.register("dense_compound", () -> new Item(ItemUtils.DEFAULT_PROPERTIES));
 	
 	//Outils

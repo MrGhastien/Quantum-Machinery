@@ -10,7 +10,7 @@
 	
 	"key":
 	{
-		"R" : {"item": "quantum_machinery:conductive_compound"},
+		"R" : {"item": "quantum_machinery:hcc_nugget"},
 		"S" : {"item" : "quantum_machinery:dense_compound"}
 	},
 	"result": {"item":"quantum_machinery:cable", "count" : 8}

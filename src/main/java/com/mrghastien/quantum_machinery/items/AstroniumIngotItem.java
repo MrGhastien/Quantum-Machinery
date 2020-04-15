@@ -6,7 +6,6 @@ import java.util.List;
 import com.mrghastien.quantum_machinery.events.TooltipRenderingEventHandler;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -16,7 +15,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 
-public class AstroniumIngotItem extends Item implements ICustomTooltip{
+public class AstroniumIngotItem extends ModItem {
 
 	public AstroniumIngotItem(Properties properties) {
 		super(properties);

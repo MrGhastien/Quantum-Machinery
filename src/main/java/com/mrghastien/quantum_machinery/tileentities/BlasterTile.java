@@ -119,7 +119,7 @@ public class BlasterTile extends MachineTile {
 			world.setBlockState(pos, blockState.with(BlockStateProperties.POWERED, isProducing), 3);
 		}
 		batteryHandler.ifPresent(h -> h.fillBatteries(energy));
-		sendOutPower(energy);
+		sendOutPower();
 	}
 
 	private boolean canProduce() {

@@ -12,7 +12,7 @@
 	{
 		"R" : {"item": "minecraft:redstone_block"},
 		"S" : {"item" : "quantum_machinery:dense_compound"},
-		"C" : {"item" : "quantum_machinery:conductive_compound"}
+		"C" : {"item" : "quantum_machinery:hcc_nugget"}
 	},
 	"result": {"item":"quantum_machinery:connector", "count" : 2}
 }

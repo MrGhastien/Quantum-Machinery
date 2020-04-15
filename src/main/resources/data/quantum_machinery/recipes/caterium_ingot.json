@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quantum_machinery:caterium_ore"
+  },
+  "result": "quantum_machinery:caterium_ingot",
+  "experience": 7,
+  "cookingtime": 200
+}

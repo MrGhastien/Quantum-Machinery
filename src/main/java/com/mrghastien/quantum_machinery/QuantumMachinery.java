@@ -1,3 +1,4 @@
+
 package com.mrghastien.quantum_machinery;
 
 import org.apache.logging.log4j.LogManager;

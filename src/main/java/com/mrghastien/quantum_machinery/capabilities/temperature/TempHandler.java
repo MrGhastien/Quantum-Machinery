@@ -63,7 +63,7 @@ public class TempHandler implements ITempHandler , INBTSerializable<CompoundNBT>
 	
 	@Override
 	public double getNaturalCoolingRate() {
-		return temp / 15d;
+		return temp / 30d;
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class QuantumAccumulatorTile extends MachineTile {
 		if(world.isRemote) {
 			return;
 		}
-		sendOutPower(energy);
+		sendOutPower();
 	}
 
 	@SuppressWarnings("unchecked")

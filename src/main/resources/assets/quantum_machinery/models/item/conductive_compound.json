@@ -1,7 +1,0 @@
-{
-	"parent": "item/generated",
-	"textures":
-	{
-		"layer0": "quantum_machinery:item/conductive_compound"
-	}
-}

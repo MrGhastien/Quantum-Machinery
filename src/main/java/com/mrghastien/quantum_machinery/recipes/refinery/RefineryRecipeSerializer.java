@@ -18,9 +18,7 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 public class RefineryRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>>
 		implements IRecipeSerializer<RefineryRecipe> {
 
-	public RefineryRecipeSerializer() {
-	}
-
+	@Override
 	public RefineryRecipe read(ResourceLocation recipeId, JsonObject json) {
 		JsonElement jsonelement = (JsonElement) (JSONUtils.isJsonArray(json, "ingredients")
 				? JSONUtils.getJsonArray(json, "ingredients")
@@ -59,6 +57,7 @@ public class RefineryRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializ
 		return nonnulllist;
 	}
 
+	@Override
 	public RefineryRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
 		int i = buffer.readInt();
 		NonNullList<Ingredient> ingredients = NonNullList.withSize(i, Ingredient.EMPTY);

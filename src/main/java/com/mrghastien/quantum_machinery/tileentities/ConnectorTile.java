@@ -111,7 +111,7 @@ public class ConnectorTile extends PowerTransmitterTile {
 								).orElse(true);
 		 				if(!doContinue) return;
 							}
-						} else if(!(tileentity instanceof PowerTransmitterTile)) {
+						} else {
 							boolean doContinue = tileentity.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
 								if(handler.canReceive()) {
 									int recieved = handler.receiveEnergy(Math.min(capacity.get(), 1024), false);

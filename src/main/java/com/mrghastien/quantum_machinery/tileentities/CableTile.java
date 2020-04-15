@@ -12,7 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
-public class CableTile extends TileEntity implements ITickableTileEntity{
+public class CableTile extends TileEntity implements ITickableTileEntity {
 
 	public final int TRANSFER_RATE = 1024;
 	private Set<BlockPos> recieverPosList = new HashSet<>();

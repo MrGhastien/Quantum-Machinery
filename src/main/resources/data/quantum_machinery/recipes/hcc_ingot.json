@@ -2,7 +2,7 @@
   "type": "quantum_machinery:refining",
   "ingredients": [
     {
-      "item": "minecraft:iron_ingot"
+      "item": "quantum_machinery:caterium_ingot"
     },
     {
       "item": "minecraft:redstone",
@@ -10,8 +10,8 @@
     }
   ],
   "result": {
-    "item": "quantum_machinery:conductive_compound"
+    "item": "quantum_machinery:hcc_ingot"
   },
   "energyUsage": 150,
   "ticks": 120
-}
+}	

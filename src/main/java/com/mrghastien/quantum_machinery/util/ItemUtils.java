@@ -7,6 +7,6 @@ import net.minecraft.item.Rarity;
 
 public class ItemUtils {
 
-	public static final Item.Properties DEFAULT_PROPERTIES = new Item.Properties().group(ModSetup.MAIN_TAB).rarity(Rarity.UNCOMMON).maxStackSize(64);
+	public static final Item.Properties DEFAULT_PROPERTIES = new Item.Properties().group(ModSetup.MAIN_TAB).rarity(Rarity.COMMON).maxStackSize(64);
 	
 }

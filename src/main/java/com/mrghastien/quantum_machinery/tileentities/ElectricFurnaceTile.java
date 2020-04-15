@@ -86,7 +86,7 @@ public class ElectricFurnaceTile extends MachineTile{
 							workTimer++;
 						}
 						energy.ifPresent(e -> {
-							((ModEnergyStorage)e).extractEnergy(toConsume);
+							((ModEnergyStorage)e).consumeEnergy(toConsume, false);
 						});
 						if(workTimer >= maxTimer) {
 							if(!this.getStack(1).isEmpty()) {
@@ -124,7 +124,7 @@ public class ElectricFurnaceTile extends MachineTile{
 							}
 						});
 						energy.ifPresent(e -> {
-							((ModEnergyStorage)e).extractEnergy(toConsume);
+							((ModEnergyStorage)e).consumeEnergy(toConsume, false);
 						});
 					} else isRefining = false;
 					} else isRefining = false;

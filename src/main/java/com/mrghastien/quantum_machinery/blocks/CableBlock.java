@@ -8,7 +8,6 @@ import com.mrghastien.quantum_machinery.util.helpers.BlockHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
@@ -33,8 +32,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-@SuppressWarnings("deprecation")
-public class CableBlock extends Block implements ITileEntityProvider, IConnectable{
+public class CableBlock extends Block implements IConnectable{
 	
 	   public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
 	   public static final BooleanProperty EAST = BlockStateProperties.EAST;
@@ -154,11 +152,6 @@ public class CableBlock extends Block implements ITileEntityProvider, IConnectab
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
 		return BlockRenderType.MODEL;
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(IBlockReader worldIn) {
-		return new CableTile();
 	}
 	
 	@Override

@@ -1,17 +1,17 @@
-{
+ {
   "type": "quantum_machinery:refining",
   "ingredients": [
     {
-      "item": "quantum_machinery:antimatter_dust",
-	  "count": 4
+      "item": "minecraft:ender_eye",
+	  "count": 5
     },
     {
-      "item": "quantum_machinery:hcc_ingot",
+      "item": "minecraft:dragon_breath",
 	  "count": 2
     }
   ],
   "result": {
-    "item": "quantum_machinery:astronium_ingot"
+    "item": "quantum_machinery:antimatter_dust"
   },
   "energyUsage": 300,
   "ticks": 480

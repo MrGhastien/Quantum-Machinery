@@ -9,10 +9,5 @@ public abstract class PowerTransmitterTile extends TileEntity implements ITickab
 	public PowerTransmitterTile(TileEntityType<?> tileEntityTypeIn) {
 		super(tileEntityTypeIn);
 	}
-
-	@Override
-	public void tick() {
-		
-	}
 	
 }

@@ -75,12 +75,12 @@ public class RefineryTile extends MachineTile {
 						soundCounter = 0;
 					}
 					if (soundCounter < 20)
-						soundCounter++;
+						soundCounter++;	
 					if (this.getStack(2).getItem() == smelting.getItem() || this.getStack(2).isEmpty()) {
 						workTimer++;
 					}
 					energy.ifPresent(e -> {
-						((ModEnergyStorage) e).extractEnergy(toConsume);
+						((ModEnergyStorage) e).consumeEnergy(toConsume, false);
 					});
 					if (workTimer >= maxTimer) {
 						if (!this.getStack(2).isEmpty()) {
@@ -149,7 +149,7 @@ public class RefineryTile extends MachineTile {
 								}
 							});
 							energy.ifPresent(e -> {
-								((ModEnergyStorage) e).extractEnergy(toConsume);
+								((ModEnergyStorage) e).consumeEnergy(toConsume, false);
 							});
 						} 
 					} else

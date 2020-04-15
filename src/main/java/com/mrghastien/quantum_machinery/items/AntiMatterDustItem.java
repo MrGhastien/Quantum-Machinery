@@ -16,29 +16,30 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class WeirdDustItem extends Item{
+public class AntiMatterDustItem extends Item {
 
-	public WeirdDustItem(Properties properties) {
+	public AntiMatterDustItem(Properties properties) {
 		super(properties);
 	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(new StringTextComponent("A glittering powder that seems to evaporate slowly..."));
-		tooltip.add(new StringTextComponent(TextFormatting.RED + "" + TextFormatting.ITALIC +  "Might be bad to eat this..."));
+		tooltip.add(new StringTextComponent(
+				TextFormatting.RED + "" + TextFormatting.ITALIC + "Might be bad to eat this..."));
 	}
-	
-	
-	
+
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
 
-	if(!worldIn.isRemote()) {
-	worldIn.createExplosion(null, ModDamageSources.desintegrated, entityLiving.getPosX(), entityLiving.getPosY(), entityLiving.getPosZ(), 5.0f, false, Mode.DESTROY);
-	//Entité, Source des dommages, posX, posY, posZ, rayon de l'explosion, détruire les blocs ?, Mode de destruction.
-	}
-	return super.onItemUseFinish(stack, worldIn, entityLiving);
+		if (!worldIn.isRemote()) {
+			worldIn.createExplosion(null, ModDamageSources.desintegrated, entityLiving.getPosX(),
+					entityLiving.getPosY(), entityLiving.getPosZ(), 5.0f, false, Mode.DESTROY);
+			// Entité, Source des dommages, posX, posY, posZ, rayon de l'explosion, détruire
+			// les blocs ?, Mode de destruction.
+		}
+		return super.onItemUseFinish(stack, worldIn, entityLiving);
 	}
 }

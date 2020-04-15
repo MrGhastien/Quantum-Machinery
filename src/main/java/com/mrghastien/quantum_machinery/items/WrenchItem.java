@@ -28,7 +28,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 
-public class WrenchItem extends Item implements ICustomTooltip{
+public class WrenchItem extends ModItem {
 
 	public WrenchItem() {
 		super(new Item.Properties().group(ModSetup.MAIN_TAB).rarity(Rarity.RARE).maxStackSize(1));

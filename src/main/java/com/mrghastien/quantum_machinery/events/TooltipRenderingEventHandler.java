@@ -7,7 +7,7 @@ import java.awt.Color;
 
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.client.screens.ITempScreen;
-import com.mrghastien.quantum_machinery.items.ICustomTooltip;
+import com.mrghastien.quantum_machinery.items.ModItem;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.item.Item;
@@ -28,8 +28,8 @@ public class TooltipRenderingEventHandler {
 	public static void onColorRendered(RenderTooltipEvent.Color event) {
 		Screen currentScreen = QuantumMachinery.proxy.getCurrentScreen();
 		Item item = event.getStack().getItem();
-		if (item instanceof ICustomTooltip) {
-			((ICustomTooltip)item).colorRenderTootip(event);
+		if (item instanceof ModItem) {
+			((ModItem)item).colorRenderTootip(event);
 		}
 		if (event.getStack().isEmpty()) {
 			if (currentScreen instanceof ITempScreen) {

@@ -16,7 +16,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public abstract class MachineContainer<T extends MachineTile> extends Container{
+public abstract class MachineContainer<T extends MachineTile> extends Container {
 
 	protected T tileEntity;
 	protected PlayerEntity player;

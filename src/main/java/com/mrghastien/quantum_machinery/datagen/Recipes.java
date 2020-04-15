@@ -19,18 +19,12 @@ public class Recipes extends RecipeProvider {
 	
 	@Override
 	protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-
 		RefineryRecipeBuilder.refiningRecipe(ModItems.DENSE_COMPOUND.get(), 2, new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.OBSIDIAN, 4))
 				.addCriterion("dense_compound", InventoryChangeTrigger.Instance.forItems(ModItems.DENSE_COMPOUND.get()))
 				.build(consumer);
 		
-		RefineryRecipeBuilder.refiningRecipe(ModItems.CONDUCTIVE_COMPOUND.get(), 3, new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.REDSTONE, 6))
-				.addCriterion("conductive_compound", InventoryChangeTrigger.Instance.forItems(ModItems.CONDUCTIVE_COMPOUND.get()))
+		RefineryRecipeBuilder.refiningRecipe(ModItems.HCC_INGOT.get(), 3, new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.REDSTONE, 6))
+				.addCriterion("conductive_compound", InventoryChangeTrigger.Instance.forItems(ModItems.HCC_INGOT.get()))
 				.build(consumer);
-				
 	}
-	
-	
-
-
 }

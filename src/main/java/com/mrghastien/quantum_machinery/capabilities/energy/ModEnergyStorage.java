@@ -58,9 +58,9 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
 	
 	/**Used by generators to allow them to produce energy.
 	 * 
-	 * @param energy
-	 * @param simulate
-	 * @return
+	 * @param energy the amount of energy we want to produce
+	 * @param simulate set to false to really produce energy
+	 * @return The amount of energy produced.
 	 */
 	public int generateEnergy(int energy, boolean simulate) {
         if(getEnergyStored() + energy > getMaxEnergyStored()) {
@@ -71,6 +71,12 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
         return energy;
 	}
 	
+	/**Used by energy consumers to allow them to consume energy.
+	 * 
+	 * @param energy the amount of energy we want to consume
+	 * @param simulate set to false to really consume energy
+	 * @return The amount of energy consumed.
+	 */
 	public int consumeEnergy(int maxExtract, boolean simulate) {
 
         if(getEnergyStored() - maxExtract < 0) {

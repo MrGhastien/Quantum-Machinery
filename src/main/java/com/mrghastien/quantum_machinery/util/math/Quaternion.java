@@ -96,8 +96,5 @@ public class Quaternion {
 
 	public void setW(float w) {
 		this.w = w;
-	}
-	
-	
-	
+	}	
 }

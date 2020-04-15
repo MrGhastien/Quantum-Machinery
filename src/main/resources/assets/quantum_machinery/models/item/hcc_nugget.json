@@ -2,6 +2,6 @@
 	"parent": "item/generated",
 	"textures":
 	{
-		"layer0": "quantum_machinery:item/weird_dust"
+		"layer0": "quantum_machinery:item/hcc_nugget"
 	}
 }
