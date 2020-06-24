@@ -4,10 +4,8 @@ import java.util.Collections;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.containers.BlasterContainer;
-import com.mrghastien.quantum_machinery.network.HeatPacket;
-import com.mrghastien.quantum_machinery.network.ModNetworking;
-import com.mrghastien.quantum_machinery.tileentities.BlasterTile;
+import com.mrghastien.quantum_machinery.common.blocks.blaster.BlasterContainer;
+import com.mrghastien.quantum_machinery.common.blocks.blaster.BlasterTile;
 import com.mrghastien.quantum_machinery.util.helpers.Units;
 
 import net.minecraft.entity.player.PlayerInventory;
@@ -17,7 +15,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class BlasterScreen extends MachineScreen<BlasterContainer, BlasterTile> implements ITempScreen{
+public class BlasterScreen extends MachineScreen<BlasterContainer, BlasterTile> implements IHeatScreen {
 	
 	private double temp, maxTemp;
 	
@@ -38,10 +36,6 @@ public class BlasterScreen extends MachineScreen<BlasterContainer, BlasterTile> 
         super.render(mouseX, mouseY, partialTicks);
         this.renderHoveredToolTip(mouseX, mouseY);
         
-        if (syncCounter == 0) {
-			ModNetworking.MAIN_CHANNEL.sendToServer(new HeatPacket(this.container.getPos()));
-		}
-        
 		if (mouseX > guiLeft + 183 && mouseX < guiLeft + 183 + HEAT_WIDTH && mouseY > guiTop + 8
 				&& mouseY < guiTop + 8 + HEAT_HEIGHT
 				|| mouseX > guiLeft + 174 && mouseX < guiLeft + 174 + 23 && mouseY > guiTop + 70
@@ -50,7 +44,7 @@ public class BlasterScreen extends MachineScreen<BlasterContainer, BlasterTile> 
 		}
 		if (mouseX > guiLeft + 152 && mouseX < guiLeft + 152 + ENERGY_WIDTH && mouseY > guiTop + 8
 				&& mouseY < guiTop + 8 + ENERGY_HEIGHT) {
-			super.renderTooltip(Collections.singletonList("Energy : " + clientEnergy + " / " + clientMaxEnergy + Units.ENERGY), mouseX, mouseY, this.font);
+			super.renderTooltip(Collections.singletonList("Energy : " + energy + " / " + capacity + Units.ENERGY), mouseX, mouseY, this.font);
 		}
     }
 
@@ -63,7 +57,6 @@ public class BlasterScreen extends MachineScreen<BlasterContainer, BlasterTile> 
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-    	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.minecraft.getTextureManager().bindTexture(GUI);
         int relX = (this.width - this.xSize) / 2;
@@ -87,23 +80,9 @@ public class BlasterScreen extends MachineScreen<BlasterContainer, BlasterTile> 
     	return (int) (c != 0 && i != 0 && i > 20 ? i * pixels / c : 0);
     }
 
-	@Override
-	public void syncTemp(double temp, double maxTemp) {
-		if (temp != this.temp) {
-			this.temp = temp;
-		}
-		if (maxTemp != this.maxTemp) {
-			this.maxTemp = maxTemp;
-		}
-	}
-
-	@Override
-	public double getClientTemp() {
-		return temp;
-	}
-
-	@Override
-	public double getClientMaxTemp() {
-		return maxTemp;
-	}
+    @Override
+    public void syncTemperature(float temp, float capacity) {
+    	
+    }
+    
 }

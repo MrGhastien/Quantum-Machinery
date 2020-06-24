@@ -1,9 +1,7 @@
 package com.mrghastien.quantum_machinery.client.screens;
 
-import com.mrghastien.quantum_machinery.containers.MachineContainer;
-import com.mrghastien.quantum_machinery.network.MachineInfoPacket;
-import com.mrghastien.quantum_machinery.network.ModNetworking;
-import com.mrghastien.quantum_machinery.tileentities.MachineTile;
+import com.mrghastien.quantum_machinery.common.blocks.MachineContainer;
+import com.mrghastien.quantum_machinery.common.blocks.MachineTile;
 
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
@@ -12,32 +10,24 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class MachineScreen<T extends MachineContainer<U>, U extends MachineTile> extends ContainerScreen<T> {
+public abstract class MachineScreen<T extends MachineContainer<U>, U extends MachineTile> extends ContainerScreen<T> implements IEnergyScreen {
 
 	protected U tileEntity;
-	protected int clientEnergy = 0;
-	protected int clientMaxEnergy = 0;
-	protected int clientWorkTimer = 0;
-	protected int clientMaxTimer = 0;
-	protected int syncCounter = 0;
+	protected int energy;
+	protected int capacity;
+	protected int input;
+	protected int output;
+	protected int clientWorkTimer;
+	protected int clientMaxTimer;
 
 	public MachineScreen(T screenContainer, PlayerInventory inv, ITextComponent titleIn, U tileEntity) {
 		super(screenContainer, inv, titleIn);
 		this.tileEntity = tileEntity;
 	}
-	
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		syncCounter++;
-		syncCounter %= 2;
-		if (syncCounter == 0) {
-			ModNetworking.MAIN_CHANNEL.sendToServer(new MachineInfoPacket(this.container.getPos()));
-		}
-	}
 
 	protected int getEnergyScaled(int pixels) {
-    	int i = clientEnergy;
-    	int c = clientMaxEnergy;
+    	int i = energy;
+    	int c = capacity;
     	return c != 0 && i != 0 ? i * pixels / c : 0;
     }
 	
@@ -46,19 +36,16 @@ public abstract class MachineScreen<T extends MachineContainer<U>, U extends Mac
     	int c = this.clientMaxTimer;
     	return c != 0 && i != 0 ? i * pixels / c : 0;
     }
-	
-	public void sync(int energy, int maxEnergy, int workTimer, int maxTimer) {
-		if (energy != clientEnergy) {
-			this.clientEnergy = energy;
-		}
-		if (maxEnergy != clientMaxEnergy) {
-			this.clientMaxEnergy = maxEnergy;
-		}
-		if (workTimer != clientWorkTimer) {
-			this.clientWorkTimer = workTimer;
-		}
-		if (maxTimer != clientMaxTimer) {
-			this.clientMaxTimer = maxTimer;
-		}
-	}
+    
+    @Override
+    public void syncEnergy(int energy, int capacity, int input, int output) {
+    	if(energy >= 0)
+			this.energy = energy;
+    	if(capacity >= 0)
+			this.capacity = capacity;
+    	if(input >= 0)
+			this.input = input;
+		if(output <= 0)
+			this.output = output;
+    }
 }

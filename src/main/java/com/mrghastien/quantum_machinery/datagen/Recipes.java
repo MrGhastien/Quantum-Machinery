@@ -2,7 +2,7 @@ package com.mrghastien.quantum_machinery.datagen;
 
 import java.util.function.Consumer;
 
-import com.mrghastien.quantum_machinery.init.ModItems;
+import com.mrghastien.quantum_machinery.common.init.ModItems;
 
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;

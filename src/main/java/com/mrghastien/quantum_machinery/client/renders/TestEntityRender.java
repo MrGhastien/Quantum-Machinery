@@ -2,7 +2,7 @@ package com.mrghastien.quantum_machinery.client.renders;
 
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.client.models.TestEntityModel;
-import com.mrghastien.quantum_machinery.entities.TestEntity;
+import com.mrghastien.quantum_machinery.common.entities.TestEntity;
 
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;

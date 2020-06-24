@@ -4,8 +4,8 @@ import java.util.Collections;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.containers.QuantumAccumulatorContainer;
-import com.mrghastien.quantum_machinery.tileentities.QuantumAccumulatorTile;
+import com.mrghastien.quantum_machinery.common.blocks.accumulator.QuantumAccumulatorContainer;
+import com.mrghastien.quantum_machinery.common.blocks.accumulator.QuantumAccumulatorTile;
 import com.mrghastien.quantum_machinery.util.helpers.Units;
 
 import net.minecraft.entity.player.PlayerInventory;
@@ -20,7 +20,9 @@ public class QuantumAccumulatorScreen extends MachineScreen<QuantumAccumulatorCo
 	private ResourceLocation GUI = new ResourceLocation(QuantumMachinery.MODID, "textures/gui/quantum_accumulator_gui.png");
 	private final int BAR_WIDTH = 16;
 	private final int BAR_HEIGHT = 114;
-
+	
+	private int in = 0;
+	private int out = 0;
 
 	public QuantumAccumulatorScreen(QuantumAccumulatorContainer screenContainer, PlayerInventory inv,ITextComponent titleIn, QuantumAccumulatorTile tileEntity) {
 		super(screenContainer, inv, titleIn, tileEntity);
@@ -34,21 +36,23 @@ public class QuantumAccumulatorScreen extends MachineScreen<QuantumAccumulatorCo
 	        this.renderHoveredToolTip(mouseX, mouseY);
 	        
 	        if (mouseX > guiLeft + 80 && mouseX < guiLeft + 80 + BAR_WIDTH && mouseY > guiTop + 17 && mouseY < guiTop + 17 + BAR_HEIGHT) {
-	        		super.renderTooltip(Collections.singletonList("Energy: " + clientEnergy + "/" + clientMaxEnergy + Units.ENERGY), mouseX, mouseY, this.font);
+	        		super.renderTooltip(Collections.singletonList("Energy: " + tileEntity.getEnergyStorage().getEnergyStored() + "/" + tileEntity.getEnergyStorage().getMaxEnergyStored() + Units.ENERGY), mouseX, mouseY, this.font);
 	        }
 	    }
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String tileName = "Astral Manipulator";
-		this.font.drawString(tileName, (this.xSize / 2 - this.font.getStringWidth(tileName) / 2) -5, 6, 4210752);
-		this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float)(this.ySize - 96 + 2), 4210752);
-        	//this.font.drawString("Energy : " + energy, 10, 35, 4210752);
-    }
+		this.font.drawString(tileName, (this.xSize / 2 - this.font.getStringWidth(tileName) / 2) - 5, 6, 4210752);
+		this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 96 + 2), 4210752);
+		int transfert = in - out;
+		font.drawStringWithShadow("Transfert : " + transfert, 20, this.guiTop + 30, 0x00FF00);
+
+		// this.font.drawString("Energy : " + energy, 10, 35, 4210752);
+	}
 	
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-    	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
     	RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.minecraft.getTextureManager().bindTexture(GUI);
         this.blit(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);

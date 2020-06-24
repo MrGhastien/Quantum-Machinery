@@ -2,8 +2,8 @@ package com.mrghastien.quantum_machinery.client.models;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.mrghastien.quantum_machinery.entities.GuardEntity;
-import com.mrghastien.quantum_machinery.entities.GuardEntity.ArmPose;
+import com.mrghastien.quantum_machinery.common.entities.GuardEntity;
+import com.mrghastien.quantum_machinery.common.entities.GuardEntity.ArmPose;
 
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.IHasArm;
@@ -102,9 +102,29 @@ public class GuardModel extends EntityModel<GuardEntity> implements IHasArm, IHa
         modelRenderer.rotateAngleZ = z;
     }
     
-    @Override
-    public void render(GuardEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
-    		float headPitch) {
+    public void setLivingAnimations(GuardEntity entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
+        super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
+     }
+	
+	private ModelRenderer getArm(HandSide p_191216_1_) {
+	      return p_191216_1_ == HandSide.LEFT ? this.GuardLeftArm : this.GuardRightArm;
+	   }
+
+	@Override
+	public ModelRenderer getModelHead() {
+		return this.GuardHead;
+	}
+
+	@Override
+	public void translateHand(HandSide sideIn, MatrixStack matrixStackIn) {
+		this.getArm(sideIn).translateRotate(matrixStackIn);;
+	}
+	
+	
+
+	@Override
+	public void setRotationAngles(GuardEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,
+			float netHeadYaw, float headPitch) {
     	currentPose = entityIn.getArmPose();
     	this.GuardRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662f + (float)Math.PI) * 1.4f * limbSwingAmount* 0.5f;
     	this.GuardRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662f + (float)Math.PI) * 1.4f * limbSwingAmount * 0.5f;
@@ -139,24 +159,6 @@ public class GuardModel extends EntityModel<GuardEntity> implements IHasArm, IHa
             this.GuardLeftArm.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
             this.GuardLeftArm.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
          }
-    }
-    
-    public void setLivingAnimations(GuardEntity entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
-        super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
-     }
-	
-	private ModelRenderer getArm(HandSide p_191216_1_) {
-	      return p_191216_1_ == HandSide.LEFT ? this.GuardLeftArm : this.GuardRightArm;
-	   }
-
-	@Override
-	public ModelRenderer getModelHead() {
-		return this.GuardHead;
-	}
-
-	@Override
-	public void translateHand(HandSide sideIn, MatrixStack matrixStackIn) {
-		this.getArm(sideIn).setAnglesAndRotation(matrixStackIn);
 	}
 
 }

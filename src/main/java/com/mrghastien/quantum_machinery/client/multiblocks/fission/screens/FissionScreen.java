@@ -2,11 +2,9 @@ package com.mrghastien.quantum_machinery.client.multiblocks.fission.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.multiblocks.fission.containers.FissionContainer;
-import com.mrghastien.quantum_machinery.multiblocks.fission.tileentities.FissionControllerTile;
-import com.mrghastien.quantum_machinery.multiblocks.fission.tileentities.FissionControllerTile.RunningState;
-import com.mrghastien.quantum_machinery.network.FissionPacket;
-import com.mrghastien.quantum_machinery.network.ModNetworking;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.containers.FissionContainer;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile.RunningState;
 import com.mrghastien.quantum_machinery.util.helpers.MathPHelper;
 import com.mrghastien.quantum_machinery.util.helpers.Units;
 
@@ -55,11 +53,6 @@ public class FissionScreen extends ContainerScreen<FissionContainer> {
         int relX = (this.width - this.xSize) / 2;
         int relY = (this.height - this.ySize) / 2;
         this.blit(relX, relY, 0, 0, this.xSize, this.ySize);
-        syncCounter++;
-		syncCounter %= 2;
-		if (syncCounter == 0) {
-			ModNetworking.MAIN_CHANNEL.sendToServer(new FissionPacket(this.container.getPos(), requestedState));
-		}
 		if (state == RunningState.STOPPED) {
 			addButton(new Button(this.guiLeft + 137, this.guiTop + 123, 64, 16, "Start", new IPressable() {
 

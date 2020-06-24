@@ -2,8 +2,8 @@ package com.mrghastien.quantum_machinery.util.helpers;
 
 import java.util.Set;
 
-import com.mrghastien.quantum_machinery.multiblocks.ControllerTile;
-import com.mrghastien.quantum_machinery.multiblocks.IMultiBlock;
+import com.mrghastien.quantum_machinery.common.multiblocks.ControllerTile;
+import com.mrghastien.quantum_machinery.common.multiblocks.IMultiBlock;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;

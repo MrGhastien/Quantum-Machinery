@@ -1,15 +1,14 @@
-
 package com.mrghastien.quantum_machinery;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mrghastien.quantum_machinery.events.TooltipRenderingEventHandler;
-import com.mrghastien.quantum_machinery.init.ModBlocks;
-import com.mrghastien.quantum_machinery.init.ModContainers;
-import com.mrghastien.quantum_machinery.init.ModItems;
-import com.mrghastien.quantum_machinery.init.ModRecipes;
-import com.mrghastien.quantum_machinery.init.ModTileEntities;
+import com.mrghastien.quantum_machinery.common.events.TooltipRenderingEventHandler;
+import com.mrghastien.quantum_machinery.common.init.ModBlocks;
+import com.mrghastien.quantum_machinery.common.init.ModContainers;
+import com.mrghastien.quantum_machinery.common.init.ModItems;
+import com.mrghastien.quantum_machinery.common.init.ModRecipes;
+import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
 import com.mrghastien.quantum_machinery.setup.ClientSetup;
 import com.mrghastien.quantum_machinery.setup.ModSetup;
 import com.mrghastien.quantum_machinery.util.proxy.ClientProxy;
@@ -22,6 +21,10 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+/**
+ * @author MrGhastien
+ */
 
 @Mod("quantum_machinery")
 public class QuantumMachinery {
@@ -46,7 +49,6 @@ public class QuantumMachinery {
 		ModContainers.CONTAINERS.register(modEventBus);
 		ModTileEntities.TILES.register(modEventBus);
 		ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
-		
 	}
 	
 	public static ResourceLocation location(String name) {

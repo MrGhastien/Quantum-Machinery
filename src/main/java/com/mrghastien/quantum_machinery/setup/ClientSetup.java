@@ -1,9 +1,9 @@
 package com.mrghastien.quantum_machinery.setup;
 
-import static com.mrghastien.quantum_machinery.init.ModContainers.BLASTER_CONTAINER;
-import static com.mrghastien.quantum_machinery.init.ModContainers.ELECTRIC_FURNACE_CONTAINER;
-import static com.mrghastien.quantum_machinery.init.ModContainers.QUANTUM_ACCUMULATOR_CONTAINER;
-import static com.mrghastien.quantum_machinery.init.ModContainers.REFINERY_CONTAINER;
+import static com.mrghastien.quantum_machinery.common.init.ModContainers.BLASTER_CONTAINER;
+import static com.mrghastien.quantum_machinery.common.init.ModContainers.ELECTRIC_FURNACE_CONTAINER;
+import static com.mrghastien.quantum_machinery.common.init.ModContainers.QUANTUM_ACCUMULATOR_CONTAINER;
+import static com.mrghastien.quantum_machinery.common.init.ModContainers.REFINERY_CONTAINER;
 
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.client.multiblocks.fission.screens.FissionScreen;
@@ -11,17 +11,17 @@ import com.mrghastien.quantum_machinery.client.screens.BlasterScreen;
 import com.mrghastien.quantum_machinery.client.screens.ElectricFurnaceScreen;
 import com.mrghastien.quantum_machinery.client.screens.QuantumAccumulatorScreen;
 import com.mrghastien.quantum_machinery.client.screens.RefineryScreen;
-import com.mrghastien.quantum_machinery.containers.BlasterContainer;
-import com.mrghastien.quantum_machinery.containers.ElectricFurnaceContainer;
-import com.mrghastien.quantum_machinery.containers.QuantumAccumulatorContainer;
-import com.mrghastien.quantum_machinery.containers.RefineryContainer;
-import com.mrghastien.quantum_machinery.init.ModContainers;
-import com.mrghastien.quantum_machinery.multiblocks.fission.containers.FissionContainer;
-import com.mrghastien.quantum_machinery.multiblocks.fission.tileentities.FissionControllerTile;
-import com.mrghastien.quantum_machinery.tileentities.BlasterTile;
-import com.mrghastien.quantum_machinery.tileentities.ElectricFurnaceTile;
-import com.mrghastien.quantum_machinery.tileentities.QuantumAccumulatorTile;
-import com.mrghastien.quantum_machinery.tileentities.RefineryTile;
+import com.mrghastien.quantum_machinery.common.blocks.accumulator.QuantumAccumulatorContainer;
+import com.mrghastien.quantum_machinery.common.blocks.accumulator.QuantumAccumulatorTile;
+import com.mrghastien.quantum_machinery.common.blocks.blaster.BlasterContainer;
+import com.mrghastien.quantum_machinery.common.blocks.blaster.BlasterTile;
+import com.mrghastien.quantum_machinery.common.blocks.furnace.ElectricFurnaceContainer;
+import com.mrghastien.quantum_machinery.common.blocks.furnace.ElectricFurnaceTile;
+import com.mrghastien.quantum_machinery.common.blocks.refinery.RefineryContainer;
+import com.mrghastien.quantum_machinery.common.blocks.refinery.RefineryTile;
+import com.mrghastien.quantum_machinery.common.init.ModContainers;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.containers.FissionContainer;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile;
 
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.fml.common.Mod;

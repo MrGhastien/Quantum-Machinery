@@ -4,8 +4,8 @@ import java.util.Collections;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.containers.RefineryContainer;
-import com.mrghastien.quantum_machinery.tileentities.RefineryTile;
+import com.mrghastien.quantum_machinery.common.blocks.refinery.RefineryContainer;
+import com.mrghastien.quantum_machinery.common.blocks.refinery.RefineryTile;
 
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -32,7 +32,7 @@ public class RefineryScreen extends MachineScreen<RefineryContainer, RefineryTil
 	        this.renderHoveredToolTip(mouseX, mouseY);
 	        
 	        if(mouseX > guiLeft + 43 && mouseX < guiLeft + 43 + BAR_WIDTH && mouseY > guiTop + 17 && mouseY < guiTop + 17 + BAR_HEIGHT) {
-	        	super.renderTooltip(Collections.singletonList("Energy : " + clientEnergy + " / " + clientMaxEnergy), mouseX, mouseY, this.font);
+	        	super.renderTooltip(Collections.singletonList("Energy : " + energy + " / " + capacity), mouseX, mouseY, this.font);
 	        }
 	    }
 
@@ -46,7 +46,6 @@ public class RefineryScreen extends MachineScreen<RefineryContainer, RefineryTil
 
 	    @Override
 	    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-	    	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 	    	RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 	        this.minecraft.getTextureManager().bindTexture(GUI);
 	        int relX = (this.width - this.xSize) / 2;

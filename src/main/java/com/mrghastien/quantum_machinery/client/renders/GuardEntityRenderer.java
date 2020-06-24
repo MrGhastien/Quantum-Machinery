@@ -3,7 +3,7 @@ package com.mrghastien.quantum_machinery.client.renders;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.client.models.GuardModel;
-import com.mrghastien.quantum_machinery.entities.GuardEntity;
+import com.mrghastien.quantum_machinery.common.entities.GuardEntity;
 
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRenderer;

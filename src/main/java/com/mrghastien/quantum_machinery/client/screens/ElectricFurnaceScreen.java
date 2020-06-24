@@ -4,8 +4,8 @@ import java.util.Collections;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.containers.ElectricFurnaceContainer;
-import com.mrghastien.quantum_machinery.tileentities.ElectricFurnaceTile;
+import com.mrghastien.quantum_machinery.common.blocks.furnace.ElectricFurnaceContainer;
+import com.mrghastien.quantum_machinery.common.blocks.furnace.ElectricFurnaceTile;
 import com.mrghastien.quantum_machinery.util.helpers.Units;
 
 import net.minecraft.entity.player.PlayerInventory;
@@ -34,7 +34,7 @@ public class ElectricFurnaceScreen extends MachineScreen<ElectricFurnaceContaine
         this.renderHoveredToolTip(mouseX, mouseY);
         
         if(mouseX > guiLeft + 43 && mouseX < guiLeft + 43 + BAR_WIDTH && mouseY > guiTop + 17 && mouseY < guiTop + 17 + BAR_HEIGHT) {
-        	super.renderTooltip(Collections.singletonList("Energy : " + clientEnergy + " / " + clientMaxEnergy + Units.ENERGY), mouseX, mouseY, this.font);
+        	super.renderTooltip(Collections.singletonList("Energy : " + energy + " / " + capacity + Units.ENERGY), mouseX, mouseY, this.font);
         }
     }
 
@@ -48,7 +48,6 @@ public class ElectricFurnaceScreen extends MachineScreen<ElectricFurnaceContaine
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-    	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
     	RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.minecraft.getTextureManager().bindTexture(GUI);
         int relX = (this.width - this.xSize) / 2;

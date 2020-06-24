@@ -1,9 +1,9 @@
 package com.mrghastien.quantum_machinery.setup;
 
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.init.ModItems;
-import com.mrghastien.quantum_machinery.network.ModNetworking;
-import com.mrghastien.quantum_machinery.world.oregen.OreGeneration;
+import com.mrghastien.quantum_machinery.common.init.ModItems;
+import com.mrghastien.quantum_machinery.common.network.ModNetworking;
+import com.mrghastien.quantum_machinery.common.world.oregen.OreGeneration;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -24,7 +24,7 @@ public class ModSetup {
 		}
 	};
 	
-	public final ItemGroup tools = new ItemGroup("machines") {
+	public static final ItemGroup TOOLS = new ItemGroup("machines") {
 		
 		@OnlyIn(Dist.CLIENT)
 		@Override

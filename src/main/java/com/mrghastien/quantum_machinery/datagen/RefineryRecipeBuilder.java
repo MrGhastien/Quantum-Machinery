@@ -6,9 +6,9 @@ import javax.annotation.Nullable;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.mrghastien.quantum_machinery.init.ModRecipes;
-import com.mrghastien.quantum_machinery.recipes.refinery.RefineryRecipe;
-import com.mrghastien.quantum_machinery.recipes.refinery.RefineryRecipeSerializer;
+import com.mrghastien.quantum_machinery.common.init.ModRecipes;
+import com.mrghastien.quantum_machinery.common.recipes.refinery.RefineryRecipe;
+import com.mrghastien.quantum_machinery.common.recipes.refinery.RefineryRecipeSerializer;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;

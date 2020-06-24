@@ -1,6 +1,6 @@
 package com.mrghastien.quantum_machinery.client.models;
 
-import com.mrghastien.quantum_machinery.entities.TestEntity;
+import com.mrghastien.quantum_machinery.common.entities.TestEntity;
 
 import net.minecraft.client.renderer.entity.model.CowModel;
 import net.minecraftforge.api.distmarker.Dist;
