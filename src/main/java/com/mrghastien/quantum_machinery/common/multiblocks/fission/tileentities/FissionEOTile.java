@@ -3,7 +3,6 @@ package com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities
 import com.mrghastien.quantum_machinery.common.capabilities.energy.ModEnergyStorage;
 import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
 import com.mrghastien.quantum_machinery.common.multiblocks.MultiBlockTile;
-import com.mrghastien.quantum_machinery.util.helpers.BlockHelper;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SnowballEntity;
@@ -31,7 +30,7 @@ public class FissionEOTile extends MultiBlockTile implements ITickableTileEntity
 		if (!isFormed) {
 			return;
 		};
-		BlockHelper.sendOutPower(world.getTileEntity(controllerPos));
+		//OBlockHelper.sendOutPower(world.getTileEntity(controllerPos));
 		SnowballEntity ent = new SnowballEntity(world, pos.getX(), pos.getY(), pos.getZ());
 		ent.setMotion(-5, 0, 8);
 		world.addEntity(ent);
@@ -39,8 +38,8 @@ public class FissionEOTile extends MultiBlockTile implements ITickableTileEntity
 
 	public boolean isUsableByPlayer(PlayerEntity player) {
 		return this.world.getTileEntity(pos) != this ? false
-				: player.getDistanceSq((double) this.pos.getX() + 0.5d, (double) this.pos.getY() + 0.5d,
-						(double) this.pos.getZ() + 0.5d) <= 64d;
+				: player.getDistanceSq(this.pos.getX() + 0.5d, this.pos.getY() + 0.5d,
+						this.pos.getZ() + 0.5d) <= 64d;
 	}
 
 	public int getEnergy() {
@@ -51,6 +50,7 @@ public class FissionEOTile extends MultiBlockTile implements ITickableTileEntity
 		return this.getCapability(CapabilityEnergy.ENERGY).map(e -> e.getMaxEnergyStored()).orElse(0);
 	}
 	
+	@Override
 	public boolean isFormed() {
 		return isFormed;
 	}

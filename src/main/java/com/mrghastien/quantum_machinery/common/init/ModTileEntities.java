@@ -1,23 +1,26 @@
 package com.mrghastien.quantum_machinery.common.init;
 
-import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.common.blocks.accumulator.QuantumAccumulatorTile;
-import com.mrghastien.quantum_machinery.common.blocks.blaster.BlasterTile;
+import java.util.Collection;
+
 import com.mrghastien.quantum_machinery.common.blocks.cable.CableTile;
-import com.mrghastien.quantum_machinery.common.blocks.furnace.ElectricFurnaceTile;
-import com.mrghastien.quantum_machinery.common.blocks.refinery.RefineryTile;
+import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterTile;
+import com.mrghastien.quantum_machinery.common.blocks.machines.accumulator.QuantumAccumulatorTile;
+import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterTile;
+import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionEOTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionPartTile;
+import com.mrghastien.quantum_machinery.setup.RegistryHandler;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModTileEntities {
 	
-	public static final DeferredRegister<TileEntityType<?>> TILES = new DeferredRegister<>(ForgeRegistries.TILE_ENTITIES, QuantumMachinery.MODID);
+	public static final DeferredRegister<TileEntityType<?>> TILES = RegistryHandler.create(ForgeRegistries.TILE_ENTITIES);
 	
 	public static final RegistryObject<TileEntityType<?>> BLASTER = TILES.register("blaster_tile",
 			() -> TileEntityType.Builder.create(BlasterTile::new, ModBlocks.BLASTER.get()).build(null));
@@ -25,8 +28,8 @@ public class ModTileEntities {
 	public static final RegistryObject<TileEntityType<?>> QUANTUM_ACCUMULATOR = TILES.register("quantum_accumulator_tile",
 			() -> TileEntityType.Builder.create(QuantumAccumulatorTile::new, ModBlocks.QUANTUM_ACCUMULATOR.get()).build(null));
 	
-	public static final RegistryObject<TileEntityType<?>> REFINERY = TILES.register("refinery_tile",
-			() -> TileEntityType.Builder.create(RefineryTile::new, ModBlocks.REFINERY.get()).build(null));
+	public static final RegistryObject<TileEntityType<?>> ALLOY_SMELTER = TILES.register("alloy_smelter_tile",
+			() -> TileEntityType.Builder.create(AlloySmelterTile::new, ModBlocks.ALLOY_SMELTER.get()).build(null));
 	
 	public static final RegistryObject<TileEntityType<?>> CABLE = TILES.register("cable_tile",
 			() -> TileEntityType.Builder.create(CableTile::new, ModBlocks.CABLE.get()).build(null));
@@ -43,4 +46,19 @@ public class ModTileEntities {
 	public static final RegistryObject<TileEntityType<?>> FISSION_PART = TILES.register("fission_part_tile",
 			() -> TileEntityType.Builder.create(FissionPartTile::new, ModBlocks.FISSION_ROD_CONTROLLER.get(), 
 					ModBlocks.FISSION_CASING.get(), ModBlocks.FISSION_GLASS.get(), ModBlocks.FISSION_FUEL_ROD.get(), ModBlocks.MAGNETIC_MODULE.get()).build(null));
+	
+	/**
+	 * @return A list containing all the tile entities in the mod.
+	 */
+	public static Collection<RegistryObject<TileEntityType<?>>> getModTiles() {
+		return TILES.getEntries();
+	}
+	
+	/** Adds all DeferredRegisters to the ModEventBus.
+	 * 
+	 * @param bus The ModEventBus
+	 */
+	public static final void register() {
+		TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
+	}
 }

@@ -3,7 +3,8 @@ package com.mrghastien.quantum_machinery.common.init;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.common.entities.GuardEntity;
 import com.mrghastien.quantum_machinery.common.entities.TestEntity;
-import com.mrghastien.quantum_machinery.setup.ModSetup;
+import com.mrghastien.quantum_machinery.setup.RegistryHandler;
+import com.mrghastien.quantum_machinery.setup.Setup;
 
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -18,7 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModEntities {
 	
-	public static final DeferredRegister<EntityType<?>> ENTITIES = new DeferredRegister<EntityType<?>>(ForgeRegistries.ENTITIES, QuantumMachinery.MODID);
+	public static final DeferredRegister<EntityType<?>> ENTITIES = RegistryHandler.create(ForgeRegistries.ENTITIES);
 	
 	public static final RegistryObject<EntityType<?>> TEST_ENTITY = ENTITIES.register("test_entity",
 			() -> EntityType.Builder.create(TestEntity::new, EntityClassification.CREATURE)
@@ -33,7 +34,7 @@ public class ModEntities {
 	}
 	
 	public static Item createEntitySpawnEgg(EntityType<?> type, int color1, int color2) {
-		SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(ModSetup.MAIN_TAB));
+		SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(Setup.MAIN_TAB));
 		return item;
 	}
 	

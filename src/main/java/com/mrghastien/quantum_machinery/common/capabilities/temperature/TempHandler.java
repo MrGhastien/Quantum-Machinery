@@ -2,11 +2,14 @@ package com.mrghastien.quantum_machinery.common.capabilities.temperature;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.common.util.LazyOptional;
 
 public class TempHandler implements ITempHandler , INBTSerializable<CompoundNBT>{
 
 	protected double temp;
 	protected double maxTemp;
+	
+	private LazyOptional<TempHandler> lazy;
 
 	public TempHandler(double maxTemp) {
 		this(maxTemp, 0);
@@ -15,6 +18,7 @@ public class TempHandler implements ITempHandler , INBTSerializable<CompoundNBT>
 	public TempHandler(double maxTemp, double temp) {
 		this.maxTemp = maxTemp;
 		this.temp = temp;
+		this.lazy = LazyOptional.of(() -> this);
 	}
 	
 	@Override
@@ -76,6 +80,10 @@ public class TempHandler implements ITempHandler , INBTSerializable<CompoundNBT>
 	@Override
 	public void deserializeNBT(CompoundNBT nbt) {
 		setTemp(nbt.getDouble("temp"));
+	}
+	
+	public LazyOptional<TempHandler> getLazy() {
+		return lazy;
 	}
 
 }

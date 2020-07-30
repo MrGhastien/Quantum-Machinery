@@ -1,12 +1,10 @@
 package com.mrghastien.quantum_machinery.client.screens;
 
-import java.util.Collections;
-
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.common.blocks.furnace.ElectricFurnaceContainer;
-import com.mrghastien.quantum_machinery.common.blocks.furnace.ElectricFurnaceTile;
-import com.mrghastien.quantum_machinery.util.helpers.Units;
+import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceContainer;
+import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceTile;
+import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
 
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -18,8 +16,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ElectricFurnaceScreen extends MachineScreen<ElectricFurnaceContainer, ElectricFurnaceTile> {
 	
 	private ResourceLocation GUI = new ResourceLocation(QuantumMachinery.MODID, "textures/gui/electric_furnace_gui.png");
-	private final int BAR_WIDTH = 3;
-	private final int BAR_HEIGHT = 61;
 	
 	public ElectricFurnaceScreen(ElectricFurnaceContainer screenContainer, PlayerInventory inv, ITextComponent titleIn, ElectricFurnaceTile tileEntity) {
 		super(screenContainer, inv, titleIn, tileEntity);
@@ -32,18 +28,13 @@ public class ElectricFurnaceScreen extends MachineScreen<ElectricFurnaceContaine
         this.renderBackground();
         super.render(mouseX, mouseY, partialTicks);
         this.renderHoveredToolTip(mouseX, mouseY);
-        
-        if(mouseX > guiLeft + 43 && mouseX < guiLeft + 43 + BAR_WIDTH && mouseY > guiTop + 17 && mouseY < guiTop + 17 + BAR_HEIGHT) {
-        	super.renderTooltip(Collections.singletonList("Energy : " + energy + " / " + capacity + Units.ENERGY), mouseX, mouseY, this.font);
-        }
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-    	String s = "Electric Furnace";
-    	this.font.drawString(s, (float)(this.xSize / 2 - this.font.getStringWidth(s) / 2), 6.0F, 4210752);
-        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float)(this.ySize - 96 + 2), 4210752);
-        //this.font.drawString("" + this.container.getCounter(), 0, 0, 0xffffff);
+    	ITextComponent s = tileEntity.getDisplayName();
+    	this.font.drawString(s.getFormattedText(), this.xSize / 2 - this.font.getStringWidth(s.getFormattedText()) / 2, 6.0F, 4210752);
+        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, this.ySize - 96 + 2, 4210752);
     }
 
     @Override
@@ -60,7 +51,7 @@ public class ElectricFurnaceScreen extends MachineScreen<ElectricFurnaceContaine
         	this.blit(guiLeft + 16, guiTop + 40, 195, 25, 16, 16);
         }
         
-        int c = this.getWorkTimerScaled(26);
+        int c = MathHelper.scale(tileEntity.getProgress(), tileEntity.getCurrentProcessingTime(), 26);
         this.blit(this.guiLeft + 86, this.guiTop + 38, 179, 0, 0 + c, 17);
         
         int e = this.getEnergyScaled(61);

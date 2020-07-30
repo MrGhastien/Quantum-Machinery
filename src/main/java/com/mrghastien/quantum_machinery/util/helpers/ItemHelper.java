@@ -1,11 +1,14 @@
 package com.mrghastien.quantum_machinery.util.helpers;
 
-import com.mrghastien.quantum_machinery.setup.ModSetup;
+import com.mrghastien.quantum_machinery.setup.Setup;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 public class ItemHelper {
 
@@ -29,5 +32,24 @@ public class ItemHelper {
 		return false;
 	}
 	
-	public static final Item.Properties DEFAULT_PROPERTIES = new Item.Properties().group(ModSetup.MAIN_TAB).rarity(Rarity.COMMON).maxStackSize(64);
+	public static boolean canItemsStack(ItemStack a, ItemStack b) {
+		if(a.isEmpty() || b.isEmpty()) return true;
+		return ItemHandlerHelper.canItemStacksStack(a, b) && a.getCount() + b.getCount() <= a.getMaxStackSize();
+	}
+	
+	public static boolean isFuel(ItemStack stack) {
+		return ForgeHooks.getBurnTime(stack) > 0;
+	}
+	
+	public static NonNullList<ItemStack> getStacksFromHandler(IItemHandler handler) {
+		NonNullList<ItemStack> stacks = NonNullList.create();
+		for(int i = 0; i < handler.getSlots(); i++) {
+			stacks.add(handler.getStackInSlot(i));
+		}
+		return stacks;
+	}
+	
+	public static Item.Properties defaultProperties() {
+		return new Item.Properties().group(Setup.MAIN_TAB);
+	}
 }

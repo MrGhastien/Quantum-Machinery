@@ -5,10 +5,10 @@ import static java.awt.Color.CYAN;
 import java.awt.Color;
 import java.util.List;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBlock;
+import com.mrghastien.quantum_machinery.common.blocks.MachineBaseBlock;
 import com.mrghastien.quantum_machinery.common.blocks.cable.CableBlock;
-import com.mrghastien.quantum_machinery.common.events.TooltipRenderingEventHandler;
-import com.mrghastien.quantum_machinery.setup.ModSetup;
+import com.mrghastien.quantum_machinery.common.events.ClientEventHandler;
+import com.mrghastien.quantum_machinery.setup.Setup;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
@@ -28,15 +28,16 @@ import net.minecraftforge.client.event.RenderTooltipEvent;
 public class WrenchItem extends ModItem {
 
 	public WrenchItem() {
-		super(new Item.Properties().group(ModSetup.MAIN_TAB).rarity(Rarity.RARE).maxStackSize(1));
+		super(new Item.Properties().group(Setup.MAIN_TAB).rarity(Rarity.RARE).maxStackSize(1));
 	}
 	
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) {
-		if(!context.getWorld().isRemote) {
-			Block block = context.getWorld().getBlockState(context.getPos()).getBlock();
-			if(context.getPlayer().isShiftKeyDown() && (block instanceof MachineBlock || block instanceof CableBlock)) {
-				context.getWorld().destroyBlock(context.getPos(), true);
+		World world = context.getWorld();
+		if(!world.isRemote) {
+			Block block = world.getBlockState(context.getPos()).getBlock();
+			if(context.getPlayer().isSneaking() && (block instanceof MachineBaseBlock || block instanceof CableBlock)) {
+				world.destroyBlock(context.getPos(), true);
 			}
 		}
 		return super.onItemUse(context);
@@ -54,21 +55,21 @@ public class WrenchItem extends ModItem {
 		Color c1 = CYAN;
 		Color c2 = CYAN;
 		int speed = 2;
-		if (!TooltipRenderingEventHandler.decreasing) {
-			TooltipRenderingEventHandler.counter += speed;
+		if (!ClientEventHandler.decreasing) {
+			ClientEventHandler.counter += speed;
 		} else {
-			TooltipRenderingEventHandler.counter -= speed;
+			ClientEventHandler.counter -= speed;
 		}
-		if (TooltipRenderingEventHandler.counter <= 0) {
-			TooltipRenderingEventHandler.counter = 0;
-			TooltipRenderingEventHandler.decreasing = false;
-		} else if(TooltipRenderingEventHandler.counter >= 255) {
-			TooltipRenderingEventHandler.counter = 255;
-			TooltipRenderingEventHandler.decreasing = true;
+		if (ClientEventHandler.counter <= 0) {
+			ClientEventHandler.counter = 0;
+			ClientEventHandler.decreasing = false;
+		} else if(ClientEventHandler.counter >= 255) {
+			ClientEventHandler.counter = 255;
+			ClientEventHandler.decreasing = true;
 		}
-		c1 = new Color(0, 255 - TooltipRenderingEventHandler.counter, 255 - TooltipRenderingEventHandler.counter);
-		c2 = new Color(0, TooltipRenderingEventHandler.counter, TooltipRenderingEventHandler.counter);
-		TooltipRenderingEventHandler.setBorderColor(event, c1, c2);
+		c1 = new Color(0, 255 - ClientEventHandler.counter, 255 - ClientEventHandler.counter);
+		c2 = new Color(0, ClientEventHandler.counter, ClientEventHandler.counter);
+		ClientEventHandler.setBorderColor(event, c1, c2);
 	}
 	
 }

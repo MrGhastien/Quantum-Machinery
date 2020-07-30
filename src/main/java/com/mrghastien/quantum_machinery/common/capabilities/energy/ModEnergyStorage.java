@@ -72,6 +72,7 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
 	
 	public void setEnergyStored(int energy) {
 		this.energy = energy;
+		onChange();
 	}
 	
 	public void setCapacity(int value) {
@@ -79,6 +80,7 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
 		if(energy > capacity) {
 			energy = capacity;
 		}
+		onChange();
 	}
 	
 	public int getMaxExtract() {
@@ -100,17 +102,32 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
 	@Override
 	public CompoundNBT serializeNBT() {
 		CompoundNBT tag = new CompoundNBT();
-		tag.putInt("energy", getEnergyStored());
+		tag.putInt("Energy", getEnergyStored());
 		return tag;
 	}
 
 	@Override
 	public void deserializeNBT(CompoundNBT nbt) {
-		setEnergyStored(nbt.getInt("energy"));
+		setEnergyStored(nbt.getInt("Energy"));
 	}
 
 	public LazyOptional<ModEnergyStorage> getLazy() {
 		return lazy;
 	}
 
+	protected void onChange() {
+		
+	}
+	
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (obj instanceof ModEnergyStorage) {
+//			ModEnergyStorage storage = (ModEnergyStorage) obj;
+//			return energy == storage.energy 
+//					&& capacity == storage.capacity 
+//					&& maxExtract == storage.maxExtract
+//					&& maxReceive == storage.maxReceive;
+//		}
+//		return false;
+//	}
 }

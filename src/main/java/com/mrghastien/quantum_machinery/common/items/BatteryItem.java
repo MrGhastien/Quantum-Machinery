@@ -3,7 +3,7 @@ package com.mrghastien.quantum_machinery.common.items;
 import java.util.List;
 
 import com.mrghastien.quantum_machinery.common.capabilities.energy.ModEnergyStorage;
-import com.mrghastien.quantum_machinery.util.helpers.Units;
+import com.mrghastien.quantum_machinery.util.Units;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;

@@ -8,7 +8,7 @@ import net.minecraftforge.client.event.RenderTooltipEvent;
 public class ModItem extends Item {
 
 	public ModItem() {
-		this(ItemHelper.DEFAULT_PROPERTIES);
+		this(ItemHelper.defaultProperties());
 	}
 	
 	public ModItem(Properties properties) {
@@ -16,18 +16,6 @@ public class ModItem extends Item {
 	}
 
 	public void colorRenderTootip(RenderTooltipEvent.Color event) {
-
-	}
-
-	public void preRenderTootip(RenderTooltipEvent.Pre event) {
-
-	}
-
-	public void PostBGRenderTootip(RenderTooltipEvent.PostBackground event) {
-
-	}
-
-	public void PostTextRenderTootip(RenderTooltipEvent.PostText event) {
 
 	}
 }

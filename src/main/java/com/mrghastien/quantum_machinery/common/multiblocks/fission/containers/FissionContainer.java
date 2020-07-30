@@ -17,22 +17,20 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class FissionContainer extends Container{
+public class FissionContainer extends Container {
 
 	public static final int SIZE = 2;
 	private static final int FUEL_INPUT = 0;
 	private static final int WASTE_OUTPUT = 1;
 	
 	protected FissionControllerTile tileEntity;
-	protected PlayerEntity player;
 	protected IItemHandler playerInventory;
 	protected BlockPos pos;
 	protected World world;
 
-	public FissionContainer(int id, World world, BlockPos pos, PlayerInventory playerinventory, PlayerEntity player) {
+	public FissionContainer(int id, World world, BlockPos pos, PlayerInventory playerinventory) {
 		super(ModContainers.FISSION_CONTROLLER_CONTAINER.get(), id);
 		this.tileEntity = (FissionControllerTile) world.getTileEntity(pos);
-		this.player = player;
 		this.playerInventory = new InvWrapper(playerinventory);
 		this.pos = pos;
 		this.world = world;
@@ -43,6 +41,7 @@ public class FissionContainer extends Container{
 		layoutPlayerInventorySlots(24, 150);
 	}
 	
+	@Override
 	public boolean canInteractWith(PlayerEntity playerIn) {
 		return tileEntity.isUsableByPlayer(playerIn);
 	}

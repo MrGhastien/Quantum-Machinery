@@ -3,7 +3,7 @@ package com.mrghastien.quantum_machinery.common.items;
 import java.awt.Color;
 import java.util.List;
 
-import com.mrghastien.quantum_machinery.common.events.TooltipRenderingEventHandler;
+import com.mrghastien.quantum_machinery.common.events.ClientEventHandler;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
@@ -33,7 +33,7 @@ public class AstroniumIngotItem extends ModItem {
 	public void colorRenderTootip(RenderTooltipEvent.Color event) {
 		Color c1 = new Color(0, 255 / 4, 125 / 4);
 		Color c2 = new Color(0, 255 / 8, 125 / 8);
-		TooltipRenderingEventHandler.setBorderColor(event, c1, c2);
+		ClientEventHandler.setBorderColor(event, c1, c2);
 	}
 
 }

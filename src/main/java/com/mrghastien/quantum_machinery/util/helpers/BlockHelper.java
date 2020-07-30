@@ -1,62 +1,68 @@
 package com.mrghastien.quantum_machinery.util.helpers;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-import com.mrghastien.quantum_machinery.common.capabilities.energy.ModEnergyStorage;
-
+import net.minecraft.block.Block;
+import net.minecraft.block.Block.Properties;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class BlockHelper {
+import java.util.ArrayList;
+import java.util.List;
 
-	public static void sendOutPower(TileEntity tile) {
-		LazyOptional<IEnergyStorage> e = tile.getCapability(CapabilityEnergy.ENERGY);
+import com.mrghastien.quantum_machinery.common.blocks.MachineBaseTile;
+import com.mrghastien.quantum_machinery.common.capabilities.energy.MachineEnergyStorage;
+
+public final class BlockHelper {
+
+	public static Block.Properties defaultProperties() { return Properties.create(Material.IRON).sound(SoundType.STONE).hardnessAndResistance(5.0f); }
+	
+	public static void sendOutPower(MachineBaseTile tile, int toSend) {
+		if(!tile.getEnergyStorage().canExtract())
+			return;
+		if(toSend == 0)
+			return;
+		
+		List<Direction> validDirections = new ArrayList<>();
+		MachineEnergyStorage storage = tile.getEnergyStorage();
+		int left = toSend;
 		World world = tile.getWorld();
-		BlockPos pos = tile.getPos();
-		e.ifPresent(energy -> {
-			AtomicInteger capacity = new AtomicInteger(energy.getEnergyStored());
-			if (capacity.get() > 0) {
-				int i = 0;
-				for (Direction direction : Direction.values()) {
-					TileEntity tileentity = world.getTileEntity(pos.offset(direction));
-					if (tileentity != null) {
-						int space = tileentity.getCapability(CapabilityEnergy.ENERGY).map(handler -> {
-							return handler.getMaxEnergyStored() - handler.getEnergyStored();
-						}).orElse(0);
-						if (space > 0)
-							i++;
-
-					}
-				}
-				int[] count = { i };
-				for (Direction direction : Direction.values()) {
-					TileEntity tileentity = world.getTileEntity(pos.offset(direction));
-					if (tileentity != null && i > 0) {
-						boolean doContinue = tileentity.getCapability(CapabilityEnergy.ENERGY, direction)
-								.map(handler -> {
-									if (handler.canReceive()) {
-										int output = Math.min(capacity.get() / count[0], 1024 / count[0]);
-										int recieved = handler.receiveEnergy(output, false);
-										capacity.addAndGet(-recieved);
-										((ModEnergyStorage) energy).extractEnergy(recieved);
-										tile.markDirty();
-										return capacity.get() > 0;
-									} else {
-										return true;
-									}
-								}).orElse(true);
-						if (!doContinue)
-							return;
-					}
+		for (Direction dir : Direction.values()) {
+			BlockPos offsetPos = tile.getPos().offset(dir);
+			if (BlockHelper.canBlockHandleEnergy(offsetPos, dir.getOpposite(), world)) {
+				TileEntity tileEntity = world.getTileEntity(offsetPos);
+				boolean canRecieve = tileEntity.getCapability(CapabilityEnergy.ENERGY, dir.getOpposite())
+						.orElseThrow(
+								() -> new IllegalStateException("Failed power sending : Tile Entity does not exist !"))
+						.canReceive();
+				if (canRecieve) {
+					validDirections.add(dir);
 				}
 			}
-		});
+		}
+		
+		if(validDirections.isEmpty())
+			return;
+		
+		int perSide = left / validDirections.size();
+		for (Direction dir : validDirections) {
+			BlockPos offsetPos = tile.getPos().offset(dir);
+			TileEntity tileEntity = world.getTileEntity(offsetPos);
+			IEnergyStorage otherStorage = tileEntity.getCapability(CapabilityEnergy.ENERGY, dir.getOpposite())
+					.orElseThrow(() -> new IllegalStateException(
+							"Failed power sending : Tile Entity does not have Energy Capability !"));
+			left -= otherStorage.receiveEnergy(perSide, false);
+		}
+		storage.extractEnergy(toSend - left);
+	}
+	
+	public static void sendOutPower(MachineBaseTile tile) {
+		sendOutPower(tile, tile.getEnergyStorage().getEnergyStored());
 	}
 
 	/**
@@ -74,6 +80,11 @@ public class BlockHelper {
 		BlockState state = world.getBlockState(pos);
 		return state.hasTileEntity()
 				&& world.getTileEntity(pos).getCapability(CapabilityEnergy.ENERGY, facing).isPresent();
+	}
+	
+	public static IEnergyStorage getEnergyStorage(BlockPos pos, Direction facing, World world) {
+		TileEntity tile = world.getTileEntity(pos);
+		return tile == null ? null : tile.getCapability(CapabilityEnergy.ENERGY, facing.getOpposite()).orElse(null);
 	}
 
 }

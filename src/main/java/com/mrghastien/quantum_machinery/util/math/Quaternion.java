@@ -58,10 +58,10 @@ public class Quaternion {
 	
 	public Quaternion multiply(Vec3i r) {
 		
-		float tempW = (float) (-x * r.getX() - y * r.getY() - z * r.getZ());
-		float tempX = (float) (w * r.getX() + y * r.getZ() - z * r.getY());
-		float tempY = (float) (w * r.getY() + z * r.getX() - x * r.getZ());
-		float tempZ = (float) (w * r.getZ() + x * r.getY() - y * r.getX());
+		float tempW = -x * r.getX() - y * r.getY() - z * r.getZ();
+		float tempX = w * r.getX() + y * r.getZ() - z * r.getY();
+		float tempY = w * r.getY() + z * r.getX() - x * r.getZ();
+		float tempZ = w * r.getZ() + x * r.getY() - y * r.getX();
 		
 		return new Quaternion(tempX, tempY, tempZ, tempW);
 	}

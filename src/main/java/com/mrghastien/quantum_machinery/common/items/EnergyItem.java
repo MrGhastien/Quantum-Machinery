@@ -64,7 +64,6 @@ public abstract class EnergyItem extends Item {
 							if (!stack.hasTag()) {
 								stack.setTag(new CompoundNBT());
 							}
-
 							stack.getTag().putInt("Energy", energy);
 						}
 					});

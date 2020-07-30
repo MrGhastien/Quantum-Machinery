@@ -49,7 +49,7 @@ public class FissionControllerBlock extends Block{
 	}
 	
 	public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
-		return Direction.getFacingFromVector((float) (entity.getPosX() - clickedBlock.getX()), (float) 0, (float) (entity.getPosZ() - clickedBlock.getZ()));
+		return Direction.getFacingFromVector((float) (entity.getPosX() - clickedBlock.getX()), 0, (float) (entity.getPosZ() - clickedBlock.getZ()));
 	}
 	
 	@Override

@@ -1,14 +1,16 @@
 package com.mrghastien.quantum_machinery.common.compat.jei;
 
 import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.client.screens.RefineryScreen;
-import com.mrghastien.quantum_machinery.common.blocks.refinery.RefineryContainer;
-import com.mrghastien.quantum_machinery.common.compat.jei.refinery.AtomRefiningCategory;
-import com.mrghastien.quantum_machinery.common.compat.jei.refinery.AtomicRefineryRecipeMaker;
+import com.mrghastien.quantum_machinery.client.screens.AlloySmelterScreen;
+import com.mrghastien.quantum_machinery.client.screens.ElectricFurnaceScreen;
+import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterContainer;
+import com.mrghastien.quantum_machinery.common.compat.jei.alloySmelting.AlloySmeltingCategory;
 import com.mrghastien.quantum_machinery.common.init.ModBlocks;
+import com.mrghastien.quantum_machinery.common.recipes.ModRecipeType;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaRecipeCategoryUid;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
@@ -16,6 +18,7 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -30,8 +33,8 @@ public class JeiCompat implements IModPlugin {
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		//final IJeiHelpers jeiHelpers = registration.getJeiHelpers();
-		
-		registration.addRecipes(AtomicRefineryRecipeMaker.getRecipes(), RecipeCategories.ATOM_REFINING);
+		Minecraft instance = Minecraft.getInstance();
+		registration.addRecipes(ModRecipeType.ALLOY_SMELTING.getRecipes(instance.world).values(), RecipeCategories.ALLOY_SMELTING);
 	}
 	
 	@Override
@@ -39,22 +42,24 @@ public class JeiCompat implements IModPlugin {
 		final IJeiHelpers helpers = registration.getJeiHelpers();
 		final IGuiHelper gui = helpers.getGuiHelper();
 		
-		registration.addRecipeCategories(new AtomRefiningCategory(gui));
+		registration.addRecipeCategories(new AlloySmeltingCategory(gui));
 	}
 	
 	@Override
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-		registration.addRecipeClickArea(RefineryScreen.class, 16, 40, 16, 16, RecipeCategories.ATOM_REFINING);
+		registration.addRecipeClickArea(AlloySmelterScreen.class, 124, 69, 14, 14, RecipeCategories.ALLOY_SMELTING);
+		registration.addRecipeClickArea(ElectricFurnaceScreen.class, 86, 39, 26, 16, VanillaRecipeCategoryUid.FURNACE);
 	}
 	
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(ModBlocks.REFINERY.get().asItem()), RecipeCategories.ATOM_REFINING);
+		registration.addRecipeCatalyst(new ItemStack(ModBlocks.ALLOY_SMELTER.get().asItem()), RecipeCategories.ALLOY_SMELTING);
+		registration.addRecipeCatalyst(new ItemStack(ModBlocks.ELECTRIC_FURNACE.get().asItem()), VanillaRecipeCategoryUid.FURNACE);
 	}
 	
 	@Override
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-		registration.addRecipeTransferHandler(RefineryContainer.class, RecipeCategories.ATOM_REFINING, 0, 3, 3, 36);
+		registration.addRecipeTransferHandler(AlloySmelterContainer.class, RecipeCategories.ALLOY_SMELTING, 0, 5, 5, 36);
 	}
 
 }

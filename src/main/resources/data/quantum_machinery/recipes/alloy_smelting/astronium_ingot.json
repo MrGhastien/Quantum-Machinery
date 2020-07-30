@@ -1,0 +1,18 @@
+{
+  "type": "quantum_machinery:alloy_smelting",
+  "ingredients": [
+    {
+      "item": "quantum_machinery:antimatter_dust",
+	  "count": 4
+    },
+    {
+      "item": "quantum_machinery:hcc_ingot",
+	  "count": 2
+    }
+  ],
+  "result": {
+    "item": "quantum_machinery:astronium_ingot"
+  },
+  "energyUsage": 300,
+  "ticks": 480
+}

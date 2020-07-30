@@ -2,7 +2,7 @@ package com.mrghastien.quantum_machinery.common.network;
 
 import java.lang.reflect.Field;
 
-import com.mrghastien.quantum_machinery.common.capabilities.energy.ModEnergyStorage;
+import com.mrghastien.quantum_machinery.common.capabilities.energy.MachineEnergyStorage;
 
 import net.minecraft.network.PacketBuffer;
 
@@ -22,12 +22,18 @@ public abstract class SyncedField<T> {
 		T value = null;
 		try {
 			value = retrieveValue();
-			if(lastValue == null && value != null || lastValue != null && !lastValue.equals(value))
+			if(lastValue == null && value != null || lastValue != null && !lastValue.equals(value)) {
+				lastValue = value == null ? null : copyValue(value);
 				return true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	protected T copyValue(T oldValue) {
+		return oldValue;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -86,10 +92,15 @@ public abstract class SyncedField<T> {
 		}
 	}
 	
-	public static class SyncedEnergyStorage extends SyncedField<ModEnergyStorage> {
+	public static class SyncedEnergyStorage extends SyncedField<MachineEnergyStorage> {
 
 		public SyncedEnergyStorage(Object instance, Field field) {
 			super(instance, field);
+		}
+		
+		@Override
+		protected MachineEnergyStorage copyValue(MachineEnergyStorage oldValue) {
+			return oldValue.copy();
 		}
 	}
 	
@@ -99,7 +110,7 @@ public abstract class SyncedField<T> {
 		if(double.class.isAssignableFrom(field.getType())) return new SyncedDouble(instance, field);
 		if(boolean.class.isAssignableFrom(field.getType())) return new SyncedBoolean(instance, field);
 		if(String.class.isAssignableFrom(field.getType())) return new SyncedString(instance, field);
-		if(ModEnergyStorage.class.isAssignableFrom(field.getType())) return new SyncedEnergyStorage(instance, field);
+		if(MachineEnergyStorage.class.isAssignableFrom(field.getType())) return new SyncedEnergyStorage(instance, field);
 		return null;
 	}
 	
@@ -118,7 +129,7 @@ public abstract class SyncedField<T> {
 		switch (type) {
 			case 0:
 				buf.writeInt((int) value);
-				break;
+				break; 
 			case 1:
 				buf.writeFloat((float) value);
 				break;
@@ -132,10 +143,12 @@ public abstract class SyncedField<T> {
 				buf.writeString((String) value);
 				break;
 			case 5:
-				buf.writeInt(((ModEnergyStorage) value).getMaxEnergyStored());
-				buf.writeInt(((ModEnergyStorage) value).getMaxReceive());
-				buf.writeInt(((ModEnergyStorage) value).getMaxExtract());
-				buf.writeInt(((ModEnergyStorage) value).getEnergyStored());
+				buf.writeInt(((MachineEnergyStorage) value).getMaxEnergyStored());
+				buf.writeInt(((MachineEnergyStorage) value).getMaxReceive());
+				buf.writeInt(((MachineEnergyStorage) value).getMaxExtract());
+				buf.writeInt(((MachineEnergyStorage) value).getEnergyStored());
+				buf.writeInt(((MachineEnergyStorage) value).getOutput());
+				buf.writeInt(((MachineEnergyStorage) value).getInput());
 				break;
 			default:
 				throw new IllegalArgumentException("Wrong sync type ! " + type);
@@ -155,7 +168,13 @@ public abstract class SyncedField<T> {
 			case 4:
 				return buf.readString();
 			case 5:
-				return new ModEnergyStorage(buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt());
+				int cap = buf.readInt();
+				int maxR = buf.readInt();
+				int maxE = buf.readInt();
+				int e = buf.readInt();
+				int lastE = buf.readInt();
+				int lastR = buf.readInt();
+				return new MachineEnergyStorage(cap, maxR, maxE, e, lastR, lastE);
 			default:
 				throw new IllegalArgumentException("Wrong sync type ! " + type);
 		}

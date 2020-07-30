@@ -102,7 +102,8 @@ public class GuardModel extends EntityModel<GuardEntity> implements IHasArm, IHa
         modelRenderer.rotateAngleZ = z;
     }
     
-    public void setLivingAnimations(GuardEntity entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
+    @Override
+	public void setLivingAnimations(GuardEntity entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
      }
 	

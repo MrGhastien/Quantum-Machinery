@@ -3,7 +3,7 @@ package com.mrghastien.quantum_machinery.common.multiblocks;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mrghastien.quantum_machinery.util.helpers.MathPHelper;
+import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
 import com.mrghastien.quantum_machinery.util.math.Coord3;
 
 import net.minecraft.block.Block;
@@ -98,7 +98,7 @@ public class MultiBlockStruct {
 				for (int z = newOrigin.getZ(); z < newOrigin.getZ() + tempSize.getZ(); z++) {
 					
 					BlockPos newPos = new BlockPos(x, y, z);
-					BlockPos patternPos = new BlockPos(MathPHelper.rotate(newPos, (int) (angle / 90) * -90, new Vec3i(0, 1, 0)));
+					BlockPos patternPos = new BlockPos(MathHelper.rotate(newPos, angle / 90 * -90, new Vec3i(0, 1, 0)));
 					if (newTranslator == null) {
 						newTranslator = new Vec3i(-newOrigin.getX(), -newOrigin.getY(), -newOrigin.getZ());
 					}
@@ -121,7 +121,7 @@ public class MultiBlockStruct {
 		Vec3i translator = new Vec3i(-(Math.abs((part.width - 1) / 2)), -(Math.abs((part.height - 1) / 2)), -(Math.abs((part.depth - 1) / 2)));
 		
 		BlockPos patternPos = new BlockPos(index).add(translator);
-		BlockPos newPos = new BlockPos(MathPHelper.rotate(patternPos, (int) (angle / 90) * -90, new Vec3i(0, 1, 0)));
+		BlockPos newPos = new BlockPos(MathHelper.rotate(patternPos, angle / 90 * -90, new Vec3i(0, 1, 0)));
 		if (newTranslator == null) {
 			newTranslator = new Vec3i(-newOrigin.getX(), -newOrigin.getY(), -newOrigin.getZ());
 		}
@@ -129,7 +129,7 @@ public class MultiBlockStruct {
 	}
 	
 	public MultiBlockStruct getRotatedSize(int angle) {
-		return new MultiBlockStruct(MathPHelper.abs(MathPHelper.rotate(new Vec3i(width, height, depth), (int) (angle / 90) * 90, new Vec3i(0, 1, 0))), this.optional);
+		return new MultiBlockStruct(MathHelper.abs(MathHelper.rotate(new Vec3i(width, height, depth), angle / 90 * 90, new Vec3i(0, 1, 0))), this.optional);
 	}
 	
 	public MultiBlockStruct getMergedSize(MultiBlockStruct part, int offsetX, int offsetY, int offsetZ) {
@@ -150,7 +150,7 @@ public class MultiBlockStruct {
 	}
 	
 	public static  Map<MultiBlockStruct, Vec3i> singleMerge(Vec3i index,MultiBlockStruct part1, MultiBlockStruct part2, int offsetX, int offsetY, int offsetZ) {
-		Map<MultiBlockStruct, Vec3i> result = new HashMap<MultiBlockStruct, Vec3i>();
+		Map<MultiBlockStruct, Vec3i> result = new HashMap<>();
 		boolean[] canBePart2 = new boolean[3];
 		boolean[] canBeNull = new boolean[3];
 		

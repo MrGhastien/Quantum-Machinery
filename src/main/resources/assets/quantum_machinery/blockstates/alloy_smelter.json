@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=down,lit=false": {
+      "model": "quantum_machinery:block/alloy_smelter",
+      "x": 90
+    },
+    "facing=up,lit=false": {
+      "model": "quantum_machinery:block/alloy_smelter",
+      "x": -90
+    },
+    "facing=north,lit=false": {
+      "model": "quantum_machinery:block/alloy_smelter"
+    },
+    "facing=south,lit=false": {
+      "model": "quantum_machinery:block/alloy_smelter",
+      "y": 180
+    },
+    "facing=west,lit=false": {
+      "model": "quantum_machinery:block/alloy_smelter",
+      "y": 270
+    },
+    "facing=east,lit=false": {
+      "model": "quantum_machinery:block/alloy_smelter",
+      "y": 90
+    },
+    "facing=down,lit=true": {
+      "model": "quantum_machinery:block/alloy_smelter_lit",
+      "x": 90
+    },
+    "facing=up,lit=true": {
+      "model": "quantum_machinery:block/alloy_smelter_lit",
+      "x": -90
+    },
+    "facing=north,lit=true": {
+      "model": "quantum_machinery:block/alloy_smelter_lit"
+    },
+    "facing=south,lit=true": {
+      "model": "quantum_machinery:block/alloy_smelter_lit",
+      "y": 180
+    },
+    "facing=west,lit=true": {
+      "model": "quantum_machinery:block/alloy_smelter_lit",
+      "y": 270
+    },
+    "facing=east,lit=true": {
+      "model": "quantum_machinery:block/alloy_smelter_lit",
+      "y": 90
+    }
+  }
+}

@@ -19,7 +19,7 @@ public abstract class ControllerTile extends MultiBlockTile {
 	protected Coord3 formPos;
 	protected FormMode mode;
 	protected Set<PlayerEntity> listeners;
-	protected List<PartTile> parts = new ArrayList<PartTile>();
+	protected List<PartTile> parts = new ArrayList<>();
 	
 	public ControllerTile(TileEntityType<?> tileEntityTypeIn) {
 		super(tileEntityTypeIn);
@@ -46,7 +46,7 @@ public abstract class ControllerTile extends MultiBlockTile {
 
 	public void formMultiBlock(PlayerEntity player, Set<BlockPos> erroredPos) {
 		if (this.listeners == null) {
-			this.listeners = new HashSet<PlayerEntity>();
+			this.listeners = new HashSet<>();
 		}
 		this.listeners.add(player);
 		if (!erroredPos.isEmpty()) {
@@ -67,7 +67,7 @@ public abstract class ControllerTile extends MultiBlockTile {
 	
 	public void unformMultiBlock(PlayerEntity player, Set<BlockPos> erroredPos) {
 		if (this.listeners == null) {
-			this.listeners = new HashSet<PlayerEntity>();
+			this.listeners = new HashSet<>();
 		}
 		this.listeners.add(player);
 		if (!erroredPos.isEmpty()) {

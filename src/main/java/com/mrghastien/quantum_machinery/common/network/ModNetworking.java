@@ -26,21 +26,18 @@ public class ModNetworking {
 	
 	public static void registerNetworkPackets() {
 		
-		MAIN_CHANNEL.messageBuilder(EnergyPacket.class, nextID())
-	    .encoder(EnergyPacket::encode)
-	    .decoder(EnergyPacket::decode)
-	    .consumer(EnergyPacket::handle)
-	    .add();
-		
-		MAIN_CHANNEL.messageBuilder(HeatPacket.class, nextID())
-	    .encoder(HeatPacket::encode)
-	    .decoder(HeatPacket::decode)
-	    .consumer(HeatPacket::handle)
-	    .add();
-		
+		MAIN_CHANNEL.messageBuilder(GuiSyncPacket.class, nextID())
+		.encoder(GuiSyncPacket::encode)
+		.decoder(GuiSyncPacket::new)
+		.consumer(GuiSyncPacket::handle)
+		.add();
 	}
 
 	public static void sendToPlayer(Object message, ServerPlayerEntity listener) {
 		MAIN_CHANNEL.send(PacketDistributor.PLAYER.with(() -> listener), message);
+	}
+	
+	public static void sendToServer(Object message) {
+		MAIN_CHANNEL.sendToServer(message);
 	}
 }

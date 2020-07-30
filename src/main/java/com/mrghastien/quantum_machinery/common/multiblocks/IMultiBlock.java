@@ -34,4 +34,6 @@ public interface IMultiBlock {
 	}
 	
 	BlockPos getOrigin(World world, BlockPos pos);
+	
+	void generateStructure();
 }

@@ -27,7 +27,8 @@ public class GuardDefendVillageTargetGoal extends TargetGoal {
 	   /**
 	    * Returns whether the EntityAIBase should begin execution.
 	    */
-	   public boolean shouldExecute() {
+	   @Override
+	public boolean shouldExecute() {
 	      AxisAlignedBB axisalignedbb = this.field_75305_a.getBoundingBox().grow(10.0D, 8.0D, 10.0D);
 	      List<LivingEntity> list = this.field_75305_a.world.getTargettableEntitiesWithinAABB(VillagerEntity.class, this.field_223190_c, this.field_75305_a, axisalignedbb);
 	      List<PlayerEntity> list1 = this.field_75305_a.world.getTargettablePlayersWithinAABB(this.field_223190_c, this.field_75305_a, axisalignedbb);
@@ -49,7 +50,8 @@ public class GuardDefendVillageTargetGoal extends TargetGoal {
 	   /**
 	    * Execute a one shot task or start executing a continuous task
 	    */
-	   public void startExecuting() {
+	   @Override
+	public void startExecuting() {
 	      this.field_75305_a.setAttackTarget(this.field_75304_b);
 	      super.startExecuting();
 	   }

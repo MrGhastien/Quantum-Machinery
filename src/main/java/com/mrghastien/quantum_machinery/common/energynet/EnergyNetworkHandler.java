@@ -1,73 +1,63 @@
 package com.mrghastien.quantum_machinery.common.energynet;
 
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.TickEvent.ServerTickEvent;
+
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import net.minecraft.tileentity.TileEntity;
+public final class EnergyNetworkHandler {
+	
+	private final Set<EnergyNetwork> networks = Collections.synchronizedSet(new HashSet<EnergyNetwork>());
+	
+	public static final EnergyNetworkHandler INSTANCE = new EnergyNetworkHandler();
 
-public class EnergyNetworkHandler {
-	
-	private static final EnergyNetworkHandler INSTANCE = new EnergyNetworkHandler();
-	private final Set<EnergyNetwork> networks = new HashSet<EnergyNetwork>();
-	
-	public static EnergyNetworkHandler getInstance() {
-		return INSTANCE;
+	private EnergyNetworkHandler() {
+		MinecraftForge.EVENT_BUS.addListener(this::onServerTick);
 	}
 	
 	public Set<EnergyNetwork> getNetworks() {
-		return INSTANCE.networks;
+		return Collections.unmodifiableSet(networks);
 	}
 	
-	private static int nextID() {
-		int id = -1;
-		for (int i = 0; i < INSTANCE.networks.size(); i++) {
-			id++;
-		}
-		return id + 1;
+	public LazyOptional<EnergyNetwork> getLazy(World world, BlockPos pos) {
+		return get(world, pos).getLazy();
 	}
 	
-	public static EnergyNetwork changeNetwork(int newID, TileEntity te) {
-		if (INSTANCE.networks.contains(getNetworkPerID(newID))) {
-			for (EnergyNetwork net : INSTANCE.networks) {
-				if (net.members.contains(te) && net.id != newID) {
-					net.remove(te);
-					return getNetworkPerID(newID).add(te);
-				} else {
+	public synchronized EnergyNetwork get(World world, BlockPos pos) {
+		for(EnergyNetwork net : networks) {
+			if(net != null && net.getLazy().isPresent()) {
+				if(net.contains(world, pos)) {
 					return net;
 				}
 			}
-		} else {
-			return createNetwork(newID).add(te); 
 		}
-		return null;
+		
+		EnergyNetwork newNet = EnergyNetwork.buildNetwork(world, pos);
+		//QuantumMachinery.LOGGER.debug("created network " + newNet.hashCode());
+		networks.add(newNet);
+		return newNet;
 	}
 	
-	private static EnergyNetwork getNetworkPerID(int id) {
-		for (EnergyNetwork net : INSTANCE.networks) {
-			if (net.id == id) {
-				return net;
-			}
-		}
-		return null;
+	public void invalidateNetwork(BlockPos pos, World world) {
+		Collection<EnergyNetwork> collection = networks.stream().filter(net -> net != null && net.getLazy().isPresent() && net.contains(world, pos)).collect(Collectors.toList());
+		collection.forEach(this::invalidateNetwork);
 	}
 	
-	public static EnergyNetwork createNetwork() {
-		return createNetwork(nextID());
-	}	
+	public synchronized void invalidateNetwork(EnergyNetwork network) {
+		//QuantumMachinery.LOGGER.debug("Invalidated network " + network.hashCode());
+		networks.removeIf(net -> net != null && net.equals(network));
+		network.invalidate();
+	}
 	
-	public static EnergyNetwork createNetwork(int id) {
-		boolean alreadyExists = false;
-		EnergyNetwork net = new EnergyNetwork(id);
-		for (EnergyNetwork energyNetwork : INSTANCE.networks) {
-			if (energyNetwork.id == id) {
-				alreadyExists = true;
-				return energyNetwork;
-			}
-		}
-		if (!alreadyExists) {
-			INSTANCE.networks.add(net);
-			return net;
-		} else return null;
+	public void onServerTick(ServerTickEvent e) {
+		networks.stream().filter(n -> n != null && n.getLazy().isPresent()).forEach(EnergyNetwork::sendOutEnergy);
 	}
 	
 	public enum NetworkTier {

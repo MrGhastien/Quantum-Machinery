@@ -32,14 +32,16 @@
 	"block.quantum_machinery.blaster": "Blaster",
 	"block.quantum_machinery.quantum_accumulator": "Quantum Accumulator",
 	"block.quantum_machinery.cable":"Basic Cable",
-	"block.quantum_machinery.connector":"Basic Connector",
-	"block.quantum_machinery.refinery":"Refinery",
+	"block.quantum_machinery.alloy_smelter":"Alloy Smelter",
 	"block.quantum_machinery.electric_furnace":"Electric Furnace",
 	
 	"entity.quantum_machinery.test_entity": "Space cow",
 	"entity.quantum_machinery.villager_guard": "Villager Guard",
 	
-	"container.quantum_accumulator.name": "Quantum Accumulator",
+	"tileEntity.quantum_machinery.quantum_accumulator_tile": "Quantum Accumulator",
+	"tileEntity.quantum_machinery.blaster_tile": "Blaster",
+	"tileEntity.quantum_machinery.alloy_smelter_tile": "Alloy Smelter",
+	"tileEntity.quantum_machinery.electric_furnace_tile": "Electric Furnace",
 	
 	"multiblock.fission_reactor.running.name": "Running",
 	"multiblock.fission_reactor.stopped.name" : "Stopped",

@@ -3,7 +3,6 @@ package com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities
 import javax.annotation.Nullable;
 
 import com.mrghastien.quantum_machinery.common.capabilities.energy.ModEnergyStorage;
-import com.mrghastien.quantum_machinery.common.init.ModItems;
 import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
 import com.mrghastien.quantum_machinery.common.multiblocks.ControllerTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.FissionMultiBlock;
@@ -125,7 +124,7 @@ public class FissionControllerTile extends ControllerTile implements INamedConta
 			
 			@Override
 			public boolean isItemValid(int slot, ItemStack stack) {
-				return slot == 0 ? stack.getItem() == ModItems.RED_DIAMOND.get() : true;
+				return slot == 0;
 			}
 		};
 	}
@@ -246,6 +245,7 @@ public class FissionControllerTile extends ControllerTile implements INamedConta
 		}
 	}
 	
+	@Override
 	protected Coord3 getMultiBlockSize() {
 		return FissionMultiBlock.INSTANCE.getStruct(world.getBlockState(pos).get(BlockStateProperties.HORIZONTAL_FACING)).getSize();
 	}
@@ -267,11 +267,11 @@ public class FissionControllerTile extends ControllerTile implements INamedConta
 
 	@Override
 	public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
-		return new FissionContainer(id, world, pos, inventory, player);
+		return new FissionContainer(id, world, pos, inventory);
 	}
 
 	public boolean isUsableByPlayer(PlayerEntity player) {
-		return this.world.getTileEntity(pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5d, (double)this.pos.getY() + 0.5d, (double)this.pos.getZ() + 0.5d) <= 64d;
+		return this.world.getTileEntity(pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5d, this.pos.getY() + 0.5d, this.pos.getZ() + 0.5d) <= 64d;
 	}
 	
 	public void requestState(RunningState requestedState) {
@@ -331,7 +331,7 @@ public class FissionControllerTile extends ControllerTile implements INamedConta
   
 	public ITextComponent getName() {
 		ITextComponent itextcomponent = this.getCustomName();
-		return (ITextComponent)(itextcomponent != null ? itextcomponent : new TranslationTextComponent(containerRegistryName));
+		return itextcomponent != null ? itextcomponent : new TranslationTextComponent(containerRegistryName);
 	}
 	
 	public RunningState getRequestedState() {

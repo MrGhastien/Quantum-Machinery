@@ -2,9 +2,9 @@ package com.mrghastien.quantum_machinery.common.network;
 
 import java.util.function.Supplier;
 
-import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.common.blocks.MachineContainer;
+import com.mrghastien.quantum_machinery.common.blocks.MachineBaseContainer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.inventory.container.Container;
@@ -32,16 +32,17 @@ public class GuiSyncPacket {
 	public GuiSyncPacket(PacketBuffer buf) {
 		type = buf.readByte();
 		id = buf.readInt();
-		SyncedField.decode(buf, type);
+		value = SyncedField.decode(buf, type);
 	}
 	
 	public void handle(Supplier<NetworkEvent.Context> ctx) {
 		ctx.get().enqueueWork(() -> {
-			Screen screen = QuantumMachinery.proxy.getCurrentScreen();
+			Minecraft instance = Minecraft.getInstance();
+			Screen screen = instance.currentScreen;
 			if(screen instanceof ContainerScreen<?>) {
 				Container container = ((ContainerScreen<?>) screen).getContainer();
-				if(container instanceof MachineContainer<?>) {
-					((MachineContainer<?>) container).updateField(value, id);
+				if(container instanceof MachineBaseContainer<?>) {
+					((MachineBaseContainer<?>) container).updateField(value, id);
 				}
 			}
 		});

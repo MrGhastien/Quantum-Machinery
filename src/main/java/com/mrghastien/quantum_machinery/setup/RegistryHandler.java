@@ -1,42 +1,60 @@
 package com.mrghastien.quantum_machinery.setup;
 
-import org.apache.logging.log4j.Logger;
-
-import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.common.init.ModBlocks;
-import com.mrghastien.quantum_machinery.common.init.ModRecipes;
-import com.mrghastien.quantum_machinery.common.multiblocks.MultiBlockHandler;
-import com.mrghastien.quantum_machinery.common.multiblocks.fission.FissionMultiBlock;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.mrghastien.quantum_machinery.QuantumMachinery;
+import com.mrghastien.quantum_machinery.common.init.ModBlocks;
+import com.mrghastien.quantum_machinery.common.init.ModContainers;
+import com.mrghastien.quantum_machinery.common.init.ModItems;
+import com.mrghastien.quantum_machinery.common.init.ModRecipes;
+import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
+import com.mrghastien.quantum_machinery.common.multiblocks.MultiBlockHandler;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.FissionMultiBlock;
+import com.mrghastien.quantum_machinery.common.recipes.ModRecipeType;
+
+/**A class handling registration
+ * <p> Handles BlockItems registration automatically
+ * @author MrGhastien
+ */
 @Mod.EventBusSubscriber(modid = QuantumMachinery.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class RegistryHandler {
-	private static final String MODID = QuantumMachinery.MODID;
-	private static final Logger LOGGER = QuantumMachinery.LOGGER;
-
-	private static final ItemGroup MAIN_TAB = ModSetup.MAIN_TAB;
-
+public final class RegistryHandler {
+	
+	private static final Logger LOGGER = LogManager.getLogger();
+	
+	public static final <T extends IForgeRegistryEntry<T>> DeferredRegister<T> create(IForgeRegistry<T> reg) {
+		return DeferredRegister.create(reg, QuantumMachinery.MODID);
+	}
+	
+	public static void registerAll() {
+		ModBlocks.register();
+		ModItems.register();
+		ModContainers.register();
+		ModTileEntities.register();
+		ModRecipes.register();
+	}
+	
 	@SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 		//Enregistrement et création d'un Item de Bloc pour chaque bloc déjà enregistré
-		ModBlocks.BLOCKS.getEntries().stream()
+		ModBlocks.getModBlocks().stream()
 				.map(RegistryObject::get)
 				.forEach(block -> {
-					final Item.Properties properties = new Item.Properties().group(MAIN_TAB);
+					final Item.Properties properties = new Item.Properties().group(Setup.MAIN_TAB);
 					final BlockItem blockItem = new BlockItem(block, properties);
 					blockItem.setRegistryName(block.getRegistryName());
 					registry.register(blockItem);
@@ -62,22 +80,13 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void registerDataSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
 		//Recipe Serializers
-		Registry.register(Registry.RECIPE_TYPE, ModRecipes.REFINING_SERIALIZER.getId(), ModRecipes.REFINING_TYPE);
-		
+		ModRecipeType.registerTypes(event.getRegistry());
 		LOGGER.info("Data serializers registered");
 	}
 	
 	public static ResourceLocation location(String name) {
-		return new ResourceLocation(MODID, name);
-	}
-	
-	public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final String name) {
-		return setup(entry, new ResourceLocation(QuantumMachinery.MODID, name));
+		return new ResourceLocation(QuantumMachinery.MODID, name);
 	}
 
-	public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final ResourceLocation registryName) {
-		entry.setRegistryName(registryName);
-		return entry;
-	}
 
 }

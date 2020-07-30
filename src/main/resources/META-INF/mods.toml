@@ -3,7 +3,7 @@ loaderVersion="[28,)" #mandatory (24 is current forge version)
 
 [[mods]] #mandatory
 modId="quantum_machinery" #mandatory
-version="0.4.8" #mandatory
+version="0.0.5.1" #mandatory
 displayName="Quantum Machinery" #mandatory
 displayURL="" #optional
 credits="lul" #optional

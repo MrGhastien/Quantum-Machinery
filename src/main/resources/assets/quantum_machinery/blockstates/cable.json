@@ -1,22 +1,46 @@
 {
     "multipart": [
         {"apply": { "model": "quantum_machinery:block/cable_center" }},
-		{ "when" : {"north" : "true"},
+		{ "when" : { "OR" : [
+			{"north" : "in"},
+			{"north" : "out"},
+			{"north" : "both"}
+		]},
 		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : -90}
 		},
-		{ "when" : {"south" : "true"},
+		{ "when" : { "OR" : [
+			{"south" : "in"},
+			{"south" : "out"},
+			{"south" : "both"}
+		]},
 		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90}
 		},
-		{ "when" : {"east" : "true"},
+		{ "when" : { "OR" : [
+			{"east" : "in"},
+			{"east" : "out"},
+			{"east" : "both"}
+		]},
 		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90, "y" : -90}
 		},
-		{ "when" : {"west" : "true"},
+		{ "when" : { "OR" : [
+			{"west" : "in"},
+			{"west" : "out"},
+			{"west" : "both"}
+		]},
 		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 90, "y" : 90}
 		},
-		{ "when" : {"up" : "true"},
+		{ "when" : { "OR" : [
+			{"up" : "in"},
+			{"up" : "out"},
+			{"up" : "both"}
+		]},
 		"apply" : { "model": "quantum_machinery:block/cable_arm", "x" : 180}
 		},
-		{ "when" : {"down" : "true"},
+		{ "when" : { "OR" : [
+			{"down" : "in"},
+			{"down" : "out"},
+			{"down" : "both"}
+		]},
 		"apply" : { "model": "quantum_machinery:block/cable_arm"}
 		}
 	]

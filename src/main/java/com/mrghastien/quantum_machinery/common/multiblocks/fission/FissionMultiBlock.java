@@ -25,9 +25,9 @@ public class FissionMultiBlock implements IMultiBlock {
 	 * A null value will mean we can place any block at this relative position of the multiblock.
 	 */
 	private static final MultiBlockStruct STRUCT = new MultiBlockStruct(23, 7, 7, false);
-	
-	static {
-		//
+
+	@Override
+	public void generateStructure() {
 		for (int x = 0; x < STRUCT.getWidth(); x++) {
 			for (int y = 0; y < STRUCT.getHeight(); y++) {
 				for (int z = 0; z < STRUCT.getDepth(); z++) {
@@ -134,11 +134,11 @@ public class FissionMultiBlock implements IMultiBlock {
 		
 		STRUCT.set(11, 2, 0, ModBlocks.FISSION_CONTROLLER.get());
 	}
-
+	
 	@Override
 	public Set<BlockPos> isValidUnformedMultiBlock(Direction facing, World world, BlockPos pos) {
 		int cntSuper = 0;
-		Set<BlockPos> erroredPos = new HashSet<BlockPos>();
+		Set<BlockPos> erroredPos = new HashSet<>();
 		MultiBlockStruct struct1 = getStruct(facing);
 		for (int x = 0; x < struct1.getWidth(); x++) {
 			for (int y = 0; y < struct1.getHeight(); y++) {
@@ -187,7 +187,7 @@ public class FissionMultiBlock implements IMultiBlock {
 	@Override
 	public Set<BlockPos> isValidFormedMultiBlock(Direction facing, World world, BlockPos pos) {
 		int cntSuper = 0;
-		Set<BlockPos> erroredPos = new HashSet<BlockPos>();
+		Set<BlockPos> erroredPos = new HashSet<>();
 		MultiBlockStruct struct1 = getStruct(facing);
 		for (int x = 0; x < struct1.getWidth(); x++) {
 			for (int y = 0; y < struct1.getHeight(); y++) {
