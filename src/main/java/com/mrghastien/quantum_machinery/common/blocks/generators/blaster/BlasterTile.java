@@ -6,7 +6,7 @@ import com.mrghastien.quantum_machinery.common.capabilities.items.ModItemStackHa
 import com.mrghastien.quantum_machinery.common.capabilities.temperature.CapabilityTemp;
 import com.mrghastien.quantum_machinery.common.capabilities.temperature.TempHandler;
 import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
-import com.mrghastien.quantum_machinery.util.helpers.ItemHelper;
+import com.mrghastien.quantum_machinery.util.ItemHelper;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "quantum_machinery:blaster"
+    ]
+  },
+  "criteria": {
+    "blaster": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "quantum_machinery:blaster"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "quantum_machinery:blaster"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blaster",
+      "has_the_recipe"
+    ]
+  ]
+}

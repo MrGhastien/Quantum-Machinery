@@ -1,16 +1,5 @@
 package com.mrghastien.quantum_machinery.common.init;
 
-import static com.mrghastien.quantum_machinery.setup.Setup.MAIN_TAB;
-
-import java.util.Collection;
-
-import com.mrghastien.quantum_machinery.common.items.AntiMatterDustItem;
-import com.mrghastien.quantum_machinery.common.items.AstroniumIngotItem;
-import com.mrghastien.quantum_machinery.common.items.BatteryItem;
-import com.mrghastien.quantum_machinery.common.items.WrenchItem;
-import com.mrghastien.quantum_machinery.setup.RegistryHandler;
-import com.mrghastien.quantum_machinery.util.helpers.ItemHelper;
-
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
@@ -25,6 +14,17 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Collection;
+
+import com.mrghastien.quantum_machinery.common.items.AntiMatterDustItem;
+import com.mrghastien.quantum_machinery.common.items.AstroniumIngotItem;
+import com.mrghastien.quantum_machinery.common.items.BatteryItem;
+import com.mrghastien.quantum_machinery.common.items.WrenchItem;
+import com.mrghastien.quantum_machinery.setup.RegistryHandler;
+import com.mrghastien.quantum_machinery.util.ItemHelper;
+
+import static com.mrghastien.quantum_machinery.setup.Setup.MAIN_TAB;
+
 public class ModItems {
 	
 	public static final DeferredRegister<Item> ITEMS = RegistryHandler.create(ForgeRegistries.ITEMS);
@@ -32,10 +32,9 @@ public class ModItems {
 	//Matériaux
 	public static final RegistryObject<Item> ASTRONIUM_INGOT = ITEMS.register("astronium_ingot", () -> new AstroniumIngotItem(new Item.Properties().group(MAIN_TAB).rarity(Rarity.UNCOMMON))); 
 	public static final RegistryObject<Item> ANTIMATTER_DUST = ITEMS.register("antimatter_dust", () -> new AntiMatterDustItem(new Item.Properties().group(MAIN_TAB).food(ModFoods.ASTRONIUM_FOOD).rarity(Rarity.UNCOMMON))); 
-	public static final RegistryObject<Item> CATERIUM_INGOT = base("caterium_ingot");
-	public static final RegistryObject<Item> CATERIUM_NUGGET = base("caterium_nugget"); 
 	public static final RegistryObject<Item> MACHINE_CASING = base("machine_casing");
 	public static final RegistryObject<Item> COAL_DUST = base("coal_dust");
+	public static final RegistryObject<Item> SCREW = base("screw");
 	
 	//Outils
 	public static final RegistryObject<Item> ASTRONIUM_AXE = ITEMS.register("astronium_axe", () -> new AxeItem(ModToolMaterials.astronium, 4, -4 + 0.7f, ItemHelper.defaultProperties()));

@@ -6,5 +6,5 @@ import com.mrghastien.quantum_machinery.QuantumMachinery;
 
 @EventBusSubscriber(modid = QuantumMachinery.MODID)
 public class CommonEventHandler {
-
+	
 }

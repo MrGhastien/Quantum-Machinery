@@ -1,11 +1,5 @@
 package com.mrghastien.quantum_machinery.common.blocks.machines.furnace;
 
-import static com.mrghastien.quantum_machinery.common.init.ModContainers.ELECTRIC_FURNACE_CONTAINER;
-
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseContainer;
-import com.mrghastien.quantum_machinery.common.capabilities.energy.EnergyBar;
-import com.mrghastien.quantum_machinery.common.capabilities.energy.EnergyBar.Type;
-
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Slot;
@@ -15,7 +9,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ElectricFurnaceContainer extends MachineBaseContainer<ElectricFurnaceTile> {
+import com.mrghastien.quantum_machinery.api.client.EnergyBar;
+import com.mrghastien.quantum_machinery.api.client.EnergyBar.Type;
+import com.mrghastien.quantum_machinery.common.blocks.BaseContainer;
+
+import static com.mrghastien.quantum_machinery.common.init.ModContainers.ELECTRIC_FURNACE_CONTAINER;
+
+public class ElectricFurnaceContainer extends BaseContainer<ElectricFurnaceTile> {
 	
 	private static final int SIZE = 2;
 	private static final int INPUT = 0;
@@ -61,5 +61,4 @@ public class ElectricFurnaceContainer extends MachineBaseContainer<ElectricFurna
 		}
 		return itemstack;
 	}
-
 }

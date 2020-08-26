@@ -1,9 +1,9 @@
 package com.mrghastien.quantum_machinery.client.screens;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseContainer;
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseTile;
-import com.mrghastien.quantum_machinery.common.capabilities.energy.EnergyBar;
-import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
+import com.mrghastien.quantum_machinery.api.client.EnergyBar;
+import com.mrghastien.quantum_machinery.common.blocks.BaseContainer;
+import com.mrghastien.quantum_machinery.common.blocks.BaseTile;
+import com.mrghastien.quantum_machinery.util.MathHelper;
 
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class MachineScreen<T extends MachineBaseContainer<U>, U extends MachineBaseTile> extends ContainerScreen<T> {
+public abstract class MachineScreen<T extends BaseContainer<U>, U extends BaseTile> extends ContainerScreen<T> {
 
 	protected U tileEntity;
 

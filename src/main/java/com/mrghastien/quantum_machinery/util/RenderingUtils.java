@@ -3,7 +3,6 @@ package com.mrghastien.quantum_machinery.util;
 import java.awt.Color;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
 
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;

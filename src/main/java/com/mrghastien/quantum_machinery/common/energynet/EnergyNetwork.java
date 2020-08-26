@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.mrghastien.quantum_machinery.api.common.ConnectionType;
 import com.mrghastien.quantum_machinery.common.blocks.cable.CableBlock;
 import com.mrghastien.quantum_machinery.common.blocks.cable.CableTile;
-import com.mrghastien.quantum_machinery.common.capabilities.energy.ConnectionType;
-import com.mrghastien.quantum_machinery.util.helpers.BlockHelper;
+import com.mrghastien.quantum_machinery.util.BlockHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;

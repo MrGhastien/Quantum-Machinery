@@ -5,8 +5,8 @@ import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.containers.FissionContainer;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile.RunningState;
+import com.mrghastien.quantum_machinery.util.MathHelper;
 import com.mrghastien.quantum_machinery.util.Units;
-import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
 
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.widget.button.Button;

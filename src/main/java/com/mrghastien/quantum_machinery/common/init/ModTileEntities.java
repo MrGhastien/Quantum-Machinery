@@ -1,22 +1,23 @@
 package com.mrghastien.quantum_machinery.common.init;
 
+import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+
 import java.util.Collection;
 
 import com.mrghastien.quantum_machinery.common.blocks.cable.CableTile;
 import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterTile;
 import com.mrghastien.quantum_machinery.common.blocks.machines.accumulator.QuantumAccumulatorTile;
 import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterTile;
+import com.mrghastien.quantum_machinery.common.blocks.machines.chipper.WoodChipperTile;
 import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionEOTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionPartTile;
 import com.mrghastien.quantum_machinery.setup.RegistryHandler;
-
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModTileEntities {
 	
@@ -46,6 +47,9 @@ public class ModTileEntities {
 	public static final RegistryObject<TileEntityType<?>> FISSION_PART = TILES.register("fission_part_tile",
 			() -> TileEntityType.Builder.create(FissionPartTile::new, ModBlocks.FISSION_ROD_CONTROLLER.get(), 
 					ModBlocks.FISSION_CASING.get(), ModBlocks.FISSION_GLASS.get(), ModBlocks.FISSION_FUEL_ROD.get(), ModBlocks.MAGNETIC_MODULE.get()).build(null));
+	
+	public static final RegistryObject<TileEntityType<?>> WOOD_CHIPPER = TILES.register("wood_chipper_tile",
+			() -> TileEntityType.Builder.create(WoodChipperTile::new, ModBlocks.WOOD_CHIPPER.get()).build(null));
 	
 	/**
 	 * @return A list containing all the tile entities in the mod.

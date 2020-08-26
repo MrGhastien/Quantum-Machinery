@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import com.mrghastien.quantum_machinery.common.blocks.machines.MachineBlock;
 import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
-import com.mrghastien.quantum_machinery.util.helpers.BlockHelper;
+import com.mrghastien.quantum_machinery.util.BlockHelper;
 
 public class AlloySmelterBlock extends MachineBlock {
 	

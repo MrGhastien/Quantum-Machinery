@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "STS",
+    "FMF",
+    "STS"
+  ],
+  "key": {
+    "S": {
+      "item": "quantum_machinery:screw"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "M": {
+      "item": "quantum_machinery:machine_casing"
+    },
+    "T": {
+      "item": "minecraft:smooth_stone"
+    }
+  },
+  "result": {
+    "item": "quantum_machinery:alloy_smelter"
+  }
+}

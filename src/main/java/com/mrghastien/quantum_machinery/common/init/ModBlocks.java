@@ -1,16 +1,5 @@
 package com.mrghastien.quantum_machinery.common.init;
 
-import java.util.Collection;
-
-import com.mrghastien.quantum_machinery.common.blocks.cable.CableBlock;
-import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterBlock;
-import com.mrghastien.quantum_machinery.common.blocks.machines.accumulator.QuantumAccumulatorBlock;
-import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterBlock;
-import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceBlock;
-import com.mrghastien.quantum_machinery.common.multiblocks.fission.blocks.FissionControllerBlock;
-import com.mrghastien.quantum_machinery.common.multiblocks.fission.blocks.FissionPartBlock;
-import com.mrghastien.quantum_machinery.setup.RegistryHandler;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -19,6 +8,18 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Collection;
+
+import com.mrghastien.quantum_machinery.common.blocks.cable.CableBlock;
+import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterBlock;
+import com.mrghastien.quantum_machinery.common.blocks.machines.accumulator.QuantumAccumulatorBlock;
+import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterBlock;
+import com.mrghastien.quantum_machinery.common.blocks.machines.chipper.WoodChipperBlock;
+import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceBlock;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.blocks.FissionControllerBlock;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.blocks.FissionPartBlock;
+import com.mrghastien.quantum_machinery.setup.RegistryHandler;
 
 public final class ModBlocks {
 	
@@ -45,6 +46,8 @@ public final class ModBlocks {
 	public static final RegistryObject<Block> FISSION_ROD_CONTROLLER = BLOCKS.register("fission_rod_controller", FissionPartBlock::new);
 	public static final RegistryObject<Block> FISSION_GLASS = BLOCKS.register("fission_glass", FissionPartBlock::new);
 	public static final RegistryObject<Block> MAGNETIC_MODULE = BLOCKS.register("magnetic_module", FissionPartBlock::new);
+
+	public static final RegistryObject<Block> WOOD_CHIPPER = BLOCKS.register("wood_chipper", WoodChipperBlock::new);
 	
 	/**
 	 * @return A list containing all the blocks in the mod.

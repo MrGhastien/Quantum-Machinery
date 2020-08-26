@@ -1,6 +1,6 @@
 package com.mrghastien.quantum_machinery.common.blocks.machines.accumulator;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseBlock;
+import com.mrghastien.quantum_machinery.common.blocks.BaseBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class QuantumAccumulatorBlock extends MachineBaseBlock {
+public class QuantumAccumulatorBlock extends BaseBlock {
 
 	public QuantumAccumulatorBlock() {
 		super();

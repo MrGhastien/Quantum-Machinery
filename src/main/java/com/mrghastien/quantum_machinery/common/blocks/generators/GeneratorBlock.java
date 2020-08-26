@@ -18,9 +18,9 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseBlock;
+import com.mrghastien.quantum_machinery.common.blocks.BaseBlock;
 
-public abstract class GeneratorBlock extends MachineBaseBlock {
+public abstract class GeneratorBlock extends BaseBlock {
 
 	protected RegistryObject<TileEntityType<?>> tile;
 	

@@ -6,8 +6,8 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterContainer;
 import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterTile;
+import com.mrghastien.quantum_machinery.util.MathHelper;
 import com.mrghastien.quantum_machinery.util.Units;
-import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
 
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;

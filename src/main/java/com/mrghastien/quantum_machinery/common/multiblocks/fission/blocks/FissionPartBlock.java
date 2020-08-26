@@ -2,7 +2,7 @@ package com.mrghastien.quantum_machinery.common.multiblocks.fission.blocks;
 
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.FissionMultiBlock;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionPartTile;
-import com.mrghastien.quantum_machinery.util.helpers.MultiBlockHelper;
+import com.mrghastien.quantum_machinery.util.MultiBlockHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -3,7 +3,7 @@ package com.mrghastien.quantum_machinery.common.blocks.cable;
 import java.util.EnumMap;
 import java.util.List;
 
-import com.mrghastien.quantum_machinery.common.capabilities.energy.ConnectionType;
+import com.mrghastien.quantum_machinery.api.common.ConnectionType;
 import com.mrghastien.quantum_machinery.common.energynet.EnergyNetworkHandler;
 import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
 

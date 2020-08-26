@@ -1,13 +1,18 @@
 package com.mrghastien.quantum_machinery.common.capabilities.energy;
 
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Direction;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
+import net.minecraftforge.energy.IEnergyStorage;
 
 public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<CompoundNBT>{
 	
-	private LazyOptional<ModEnergyStorage> lazy;
+	private LazyOptional<IEnergyStorage> lazy;
 	
 	public ModEnergyStorage(int capacity, int maxInput, int maxOutput) {
 		this(capacity, maxInput, maxOutput, 0);
@@ -111,7 +116,7 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
 		setEnergyStored(nbt.getInt("Energy"));
 	}
 
-	public LazyOptional<ModEnergyStorage> getLazy() {
+	public LazyOptional<IEnergyStorage> getLazy() {
 		return lazy;
 	}
 
@@ -119,15 +124,35 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
 		
 	}
 	
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (obj instanceof ModEnergyStorage) {
-//			ModEnergyStorage storage = (ModEnergyStorage) obj;
-//			return energy == storage.energy 
-//					&& capacity == storage.capacity 
-//					&& maxExtract == storage.maxExtract
-//					&& maxReceive == storage.maxReceive;
-//		}
-//		return false;
-//	}
+	public static class Provider implements ICapabilitySerializable<CompoundNBT> {
+
+		private final ModEnergyStorage instance;
+		
+		public Provider(ModEnergyStorage instance) {
+			this.instance = instance;
+		}
+		
+		public void invalidate() {
+			instance.getLazy().invalidate();
+		}
+		
+		@Override
+		public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+			if(cap == CapabilityEnergy.ENERGY)
+				return instance.getLazy().cast();
+			return LazyOptional.empty();
+		}
+
+		@Override
+		public CompoundNBT serializeNBT() {
+			return instance.serializeNBT();
+		}
+
+		@Override
+		public void deserializeNBT(CompoundNBT nbt) {
+			instance.deserializeNBT(nbt);
+		}
+		
+	}
+	
 }

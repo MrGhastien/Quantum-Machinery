@@ -2,7 +2,7 @@ package com.mrghastien.quantum_machinery.common.network;
 
 import java.util.function.Supplier;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseContainer;
+import com.mrghastien.quantum_machinery.common.blocks.BaseContainer;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -41,8 +41,8 @@ public class GuiSyncPacket {
 			Screen screen = instance.currentScreen;
 			if(screen instanceof ContainerScreen<?>) {
 				Container container = ((ContainerScreen<?>) screen).getContainer();
-				if(container instanceof MachineBaseContainer<?>) {
-					((MachineBaseContainer<?>) container).updateField(value, id);
+				if(container instanceof BaseContainer<?>) {
+					((BaseContainer<?>) container).updateField(value, id);
 				}
 			}
 		});

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+import com.mrghastien.quantum_machinery.api.common.crafting.ModRecipeType;
 import com.mrghastien.quantum_machinery.common.blocks.machines.MachineTile;
 import com.mrghastien.quantum_machinery.common.capabilities.items.ModItemStackHandler;
-import com.mrghastien.quantum_machinery.common.recipes.ModRecipeType;
-import com.mrghastien.quantum_machinery.common.recipes.furnace.FurnaceRecipeWrapper;
+import com.mrghastien.quantum_machinery.common.recipes.FurnaceRecipeWrapper;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

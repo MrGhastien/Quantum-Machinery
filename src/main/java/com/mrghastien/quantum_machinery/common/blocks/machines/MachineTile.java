@@ -2,11 +2,11 @@ package com.mrghastien.quantum_machinery.common.blocks.machines;
 
 import java.util.Collection;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseTile;
+import com.mrghastien.quantum_machinery.api.common.crafting.BaseRecipe;
+import com.mrghastien.quantum_machinery.common.blocks.BaseTile;
 import com.mrghastien.quantum_machinery.common.capabilities.items.ModItemStackHandler;
 import com.mrghastien.quantum_machinery.common.network.GuiSynced;
-import com.mrghastien.quantum_machinery.common.recipes.BaseRecipe;
-import com.mrghastien.quantum_machinery.util.helpers.ItemHelper;
+import com.mrghastien.quantum_machinery.util.ItemHelper;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -20,7 +20,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public abstract class MachineTile<R extends BaseRecipe> extends MachineBaseTile {
+public abstract class MachineTile<R extends BaseRecipe> extends BaseTile {
 
 	@GuiSynced
 	protected int progress;

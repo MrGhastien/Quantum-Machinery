@@ -1,9 +1,9 @@
 package com.mrghastien.quantum_machinery.common.items;
 
-import com.mrghastien.quantum_machinery.util.helpers.ItemHelper;
-
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.RenderTooltipEvent;
+
+import com.mrghastien.quantum_machinery.util.ItemHelper;
 
 public class ModItem extends Item {
 

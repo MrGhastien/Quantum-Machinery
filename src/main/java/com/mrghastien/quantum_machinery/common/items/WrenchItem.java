@@ -5,7 +5,7 @@ import static java.awt.Color.CYAN;
 import java.awt.Color;
 import java.util.List;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseBlock;
+import com.mrghastien.quantum_machinery.common.blocks.BaseBlock;
 import com.mrghastien.quantum_machinery.common.blocks.cable.CableBlock;
 import com.mrghastien.quantum_machinery.common.events.ClientEventHandler;
 import com.mrghastien.quantum_machinery.setup.Setup;
@@ -36,7 +36,7 @@ public class WrenchItem extends ModItem {
 		World world = context.getWorld();
 		if(!world.isRemote) {
 			Block block = world.getBlockState(context.getPos()).getBlock();
-			if(context.getPlayer().isSneaking() && (block instanceof MachineBaseBlock || block instanceof CableBlock)) {
+			if(context.getPlayer().isSneaking() && (block instanceof BaseBlock || block instanceof CableBlock)) {
 				world.destroyBlock(context.getPos(), true);
 			}
 		}

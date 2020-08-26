@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "quantum_machinery:block/quantum_accumutator",
+      "x": 90
+    },
+    "facing=up": {
+      "model": "quantum_machinery:block/quantum_accumutator",
+      "x": -90
+    },
+    "facing=north": {
+      "model": "quantum_machinery:block/quantum_accumutator"
+    },
+    "facing=south": {
+      "model": "quantum_machinery:block/quantum_accumutator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "quantum_machinery:block/quantum_accumutator",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "quantum_machinery:block/quantum_accumutator",
+      "y": 90
+    }
+  }
+}

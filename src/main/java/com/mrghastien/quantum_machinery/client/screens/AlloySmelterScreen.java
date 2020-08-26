@@ -4,7 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrghastien.quantum_machinery.QuantumMachinery;
 import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterContainer;
 import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterTile;
-import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
+import com.mrghastien.quantum_machinery.util.MathHelper;
 
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;

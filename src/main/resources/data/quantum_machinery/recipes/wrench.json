@@ -11,7 +11,7 @@
 	"key":
 	{
 		"I" : {"item": "minecraft:iron_ingot"},
-		"S" : {"item" : "quantum_machinery:space_compound"},
+		"S" : {"item" : "quantum_machinery:steel_ingot"},
 		"W" : {"item" : "quantum_machinery:screw"}
 	},
 	"result": {"item":"quantum_machinery:wrench"}

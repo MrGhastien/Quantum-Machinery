@@ -1,15 +1,13 @@
 package com.mrghastien.quantum_machinery.common.items;
 
-import com.mrghastien.quantum_machinery.common.capabilities.energy.ModEnergyStorage;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.Direction;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
+
+import com.mrghastien.quantum_machinery.common.capabilities.energy.ItemEnergyStorage;
+import com.mrghastien.quantum_machinery.common.capabilities.energy.ModEnergyStorage;
 
 public abstract class EnergyItem extends Item {
 
@@ -21,15 +19,15 @@ public abstract class EnergyItem extends Item {
 		this.capacity = capacity;
 		this.maxTransfer = maxTransfer;
 	}
-
+	
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
-		return new EnergyCapabilityProvider(stack, this);
+		return new ModEnergyStorage.Provider(new ItemEnergyStorage(stack, capacity, maxTransfer, maxTransfer));
 	}
 	
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack) {
-		return (double)(capacity - stack.getCapability(CapabilityEnergy.ENERGY).map(e -> e.getEnergyStored()).orElse(0)) / (double)capacity;
+		return (double)(capacity - stack.getCapability(CapabilityEnergy.ENERGY, null).map(e -> e.getEnergyStored()).orElse(0)) / (double)capacity;
 	}
 	
 	@Override
@@ -40,42 +38,5 @@ public abstract class EnergyItem extends Item {
 	@Override
 	public boolean showDurabilityBar(ItemStack stack) {
 		return true;
-	}
-
-	private static class EnergyCapabilityProvider implements ICapabilityProvider {
-
-		public final LazyOptional<ModEnergyStorage> energy;
-
-		public EnergyCapabilityProvider(final ItemStack stack, EnergyItem item) {
-			this.energy = LazyOptional
-					.of(() -> new ModEnergyStorage(item.capacity, item.maxTransfer, item.maxTransfer) {
-
-						@Override
-						public int getEnergyStored() {
-							if (stack.hasTag()) {
-								return stack.getTag().getInt("Energy");
-							} else {
-								return 0;
-							}
-						}
-
-						@Override
-						public void setEnergyStored(int energy) {
-							if (!stack.hasTag()) {
-								stack.setTag(new CompoundNBT());
-							}
-							stack.getTag().putInt("Energy", energy);
-						}
-					});
-		}
-
-		@Override
-		public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-			if (cap == CapabilityEnergy.ENERGY) {
-				return energy.cast();
-			}
-			return LazyOptional.empty();
-
-		}
 	}
 }

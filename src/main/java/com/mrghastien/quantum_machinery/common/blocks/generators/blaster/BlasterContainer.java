@@ -2,9 +2,9 @@ package com.mrghastien.quantum_machinery.common.blocks.generators.blaster;
 
 import static com.mrghastien.quantum_machinery.common.init.ModContainers.BLASTER_CONTAINER;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseContainer;
-import com.mrghastien.quantum_machinery.common.capabilities.energy.EnergyBar;
-import com.mrghastien.quantum_machinery.common.capabilities.energy.EnergyBar.Type;
+import com.mrghastien.quantum_machinery.api.client.EnergyBar;
+import com.mrghastien.quantum_machinery.api.client.EnergyBar.Type;
+import com.mrghastien.quantum_machinery.common.blocks.BaseContainer;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class BlasterContainer extends MachineBaseContainer<BlasterTile>{
+public class BlasterContainer extends BaseContainer<BlasterTile>{
 	
 	public final static int SIZE = 2;
 	public static final int INPUT = 0;

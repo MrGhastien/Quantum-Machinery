@@ -3,7 +3,7 @@ package com.mrghastien.quantum_machinery.common.multiblocks;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mrghastien.quantum_machinery.util.helpers.MathHelper;
+import com.mrghastien.quantum_machinery.util.MathHelper;
 import com.mrghastien.quantum_machinery.util.math.Coord3;
 
 import net.minecraft.block.Block;

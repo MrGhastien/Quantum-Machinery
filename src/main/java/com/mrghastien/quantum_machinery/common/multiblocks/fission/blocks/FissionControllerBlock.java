@@ -4,7 +4,7 @@ import com.mrghastien.quantum_machinery.common.init.ModItems;
 import com.mrghastien.quantum_machinery.common.multiblocks.ControllerTile;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.FissionMultiBlock;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.tileentities.FissionControllerTile;
-import com.mrghastien.quantum_machinery.util.helpers.MultiBlockHelper;
+import com.mrghastien.quantum_machinery.util.MultiBlockHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

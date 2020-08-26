@@ -1,14 +1,5 @@
 package com.mrghastien.quantum_machinery.common.init;
 
-import java.util.Collection;
-
-import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterContainer;
-import com.mrghastien.quantum_machinery.common.blocks.machines.accumulator.QuantumAccumulatorContainer;
-import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterContainer;
-import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceContainer;
-import com.mrghastien.quantum_machinery.common.multiblocks.fission.containers.FissionContainer;
-import com.mrghastien.quantum_machinery.setup.RegistryHandler;
-
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.extensions.IForgeContainerType;
@@ -16,6 +7,16 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Collection;
+
+import com.mrghastien.quantum_machinery.common.blocks.generators.blaster.BlasterContainer;
+import com.mrghastien.quantum_machinery.common.blocks.machines.accumulator.QuantumAccumulatorContainer;
+import com.mrghastien.quantum_machinery.common.blocks.machines.alloy_smelter.AlloySmelterContainer;
+import com.mrghastien.quantum_machinery.common.blocks.machines.chipper.WoodChipperContainer;
+import com.mrghastien.quantum_machinery.common.blocks.machines.furnace.ElectricFurnaceContainer;
+import com.mrghastien.quantum_machinery.common.multiblocks.fission.containers.FissionContainer;
+import com.mrghastien.quantum_machinery.setup.RegistryHandler;
 
 public class ModContainers {
 	
@@ -45,6 +46,10 @@ public class ModContainers {
 		BlockPos pos = data.readBlockPos();
 		return new FissionContainer(id, inv.player.world, pos, inv);
 	}));
+	
+	public static final RegistryObject<ContainerType<WoodChipperContainer>> WOOD_CHIPPER = CONTAINERS
+			.register("wood_chipper", () -> IForgeContainerType.create(
+					(id, inv, data) -> new WoodChipperContainer(id, inv.player.world, data.readBlockPos(), inv)));
 	
 	/**
 	 * @return A list containing all the blocks in the mod.

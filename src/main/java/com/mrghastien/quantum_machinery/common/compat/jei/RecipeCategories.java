@@ -6,6 +6,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RecipeCategories {
 
-	public static final ResourceLocation ALLOY_SMELTING = ModRecipes.ALLOY_SMELTING_ZERIALIZER.getId();
+	public static final ResourceLocation ALLOY_SMELTING = ModRecipes.ALLOY_SMELTING.getId();
 	
 }

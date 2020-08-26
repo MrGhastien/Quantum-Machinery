@@ -1,6 +1,6 @@
 package com.mrghastien.quantum_machinery.common.blocks.generators;
 
-import com.mrghastien.quantum_machinery.common.blocks.MachineBaseTile;
+import com.mrghastien.quantum_machinery.common.blocks.BaseTile;
 import com.mrghastien.quantum_machinery.common.network.GuiSynced;
 
 import net.minecraft.block.BlockState;
@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntityType;
 
-public abstract class GeneratorTile extends MachineBaseTile {
+public abstract class GeneratorTile extends BaseTile {
 
 	@GuiSynced
 	protected int burnTime;

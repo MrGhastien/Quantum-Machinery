@@ -1,11 +1,17 @@
 package com.mrghastien.quantum_machinery.common.compat.jei.alloySmelting;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.mrghastien.quantum_machinery.QuantumMachinery;
+import com.mrghastien.quantum_machinery.api.common.crafting.ItemStackIngredient;
 import com.mrghastien.quantum_machinery.common.compat.jei.RecipeCategories;
-import com.mrghastien.quantum_machinery.common.recipes.alloy_smelting.AlloySmeltingRecipe;
+import com.mrghastien.quantum_machinery.common.init.ModBlocks;
+import com.mrghastien.quantum_machinery.common.recipes.AlloySmeltingRecipe;
 
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -16,12 +22,10 @@ import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.util.ResourceLocation;
 
 public class AlloySmeltingCategory implements IRecipeCategory<AlloySmeltingRecipe>{
 	
-	private static final ResourceLocation TEXTURES = QuantumMachinery.location("textures/gui/alloy_smelting_gui.png");
-	private static final ResourceLocation ICON = QuantumMachinery.location("textures/item/astronium_ingot.png");
+	private static final ResourceLocation TEXTURES = QuantumMachinery.location("textures/gui/alloy_smelter_gui.png");
 	
 	private final IDrawable background;
 	private final IDrawable icon;
@@ -31,8 +35,9 @@ public class AlloySmeltingCategory implements IRecipeCategory<AlloySmeltingRecip
 		IDrawableStatic staticFlame = helper.createDrawable(TEXTURES, 176, 0, 14, 14);
 		flame = helper.createAnimatedDrawable(staticFlame, 60, IDrawableAnimated.StartDirection.BOTTOM, false);
 		background = helper.createDrawable(TEXTURES, 38, 13, 110, 78);
-		icon = helper.createDrawable(ICON, 0, 0, 16, 16);
+		icon = helper.createDrawableIngredient(new ItemStack(ModBlocks.ALLOY_SMELTER.get()));
 	}
+	
 	@Override
 	public ResourceLocation getUid() {
 		return RecipeCategories.ALLOY_SMELTING;
@@ -60,18 +65,25 @@ public class AlloySmeltingCategory implements IRecipeCategory<AlloySmeltingRecip
 
 	@Override
 	public void setIngredients(AlloySmeltingRecipe recipe, IIngredients ingredients) {
-		ingredients.setInputIngredients(recipe.getIngredients());
-		ingredients.setOutput(VanillaTypes.ITEM, recipe.getRecipeOutput());
+		List<List<ItemStack>> superList = new ArrayList<>();
+		for(ItemStackIngredient ing : recipe.getInputs()) {
+			List<ItemStack> stacks = new ArrayList<>();
+			stacks.addAll(Arrays.asList(ing.getMatchingStacks()));
+			superList.add(stacks);
+		}
+		
+		ingredients.setInputLists(VanillaTypes.ITEM, superList);
+		ingredients.setOutput(VanillaTypes.ITEM, recipe.getResult());
 	}
 	
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, AlloySmeltingRecipe recipe, IIngredients ingredients) {
 		IGuiItemStackGroup stacks = recipeLayout.getItemStacks();
-		stacks.init(0, true, 62, 17);
-		stacks.init(1, true, 42, 33);
-		stacks.init(2, true, 42, 55);
-		stacks.init(3, true, 62, 71);
-		stacks.init(4, false, 124, 45);
+		stacks.init(0, true, 23, 3);
+		stacks.init(1, true, 3, 19);
+		stacks.init(2, true, 3, 41);
+		stacks.init(3, true, 23, 57);
+		stacks.init(4, false, 85, 31);
 		stacks.set(ingredients);
 	}
 	
@@ -83,6 +95,6 @@ public class AlloySmeltingCategory implements IRecipeCategory<AlloySmeltingRecip
 	
 	@Override
 	public void draw(AlloySmeltingRecipe recipe, double mouseX, double mouseY) {
-		flame.draw(124, 69);
+		flame.draw(86, 56);
 	}
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "quantum_machinery:cable"
+    ]
+  },
+  "criteria": {
+    "cable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "quantum_machinery:cable"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "quantum_machinery:cable"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cable",
+      "has_the_recipe"
+    ]
+  ]
+}

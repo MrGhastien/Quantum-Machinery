@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "quantum_machinery:alloy_smelting/antimatter_dust"
+    ]
+  },
+  "criteria": {
+    "antimatter_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "quantum_machinery:antimatter_dust"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "quantum_machinery:alloy_smelting/antimatter_dust"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "antimatter_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

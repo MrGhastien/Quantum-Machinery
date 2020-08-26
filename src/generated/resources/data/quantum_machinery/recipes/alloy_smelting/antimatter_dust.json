@@ -1,0 +1,24 @@
+{
+  "type": "quantum_machinery:alloy_smelting",
+  "ingredients": [
+    {
+      "type": "quantum_machinery:stacked_item",
+      "item": "minecraft:glowstone_dust",
+      "count": 4
+    },
+    {
+      "type": "quantum_machinery:stacked_item",
+      "item": "minecraft:dragon_breath",
+      "count": 1
+    },
+    {
+      "type": "quantum_machinery:stacked_item",
+      "item": "minecraft:redstone",
+      "count": 1
+    }
+  ],
+  "result": {
+    "item": "quantum_machinery:antimatter_dust"
+  },
+  "ticks": 480
+}

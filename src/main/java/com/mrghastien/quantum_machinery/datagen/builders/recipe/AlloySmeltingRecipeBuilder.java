@@ -1,16 +1,5 @@
 package com.mrghastien.quantum_machinery.datagen.builders.recipe;
 
-import static com.mrghastien.quantum_machinery.QuantumMachinery.location;
-
-import java.util.function.Consumer;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.mrghastien.quantum_machinery.QuantumMachinery;
-import com.mrghastien.quantum_machinery.common.init.ModRecipeTypes;
-import com.mrghastien.quantum_machinery.common.recipes.ItemStackIngredient;
-import com.mrghastien.quantum_machinery.datagen.CriterionHelper;
-
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,6 +8,17 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Consumer;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.mrghastien.quantum_machinery.QuantumMachinery;
+import com.mrghastien.quantum_machinery.api.common.crafting.ItemStackIngredient;
+import com.mrghastien.quantum_machinery.common.init.ModRecipeTypes;
+import com.mrghastien.quantum_machinery.datagen.CriterionHelper;
+
+import static com.mrghastien.quantum_machinery.QuantumMachinery.location;
 
 public class AlloySmeltingRecipeBuilder extends ModRecipeBuilder<AlloySmeltingRecipeBuilder> {
 	
@@ -49,8 +49,8 @@ public class AlloySmeltingRecipeBuilder extends ModRecipeBuilder<AlloySmeltingRe
 		return ingredient(ItemStackIngredient.fromTagStack(tag, count));
 	}
 
-	public void build(Consumer<IFinishedRecipe> consumerIn) {
-		this.build(consumerIn, QuantumMachinery.location("alloy_smelting/" + ForgeRegistries.ITEMS.getKey(this.result.getItem()).getPath()));
+	public void build(Consumer<IFinishedRecipe> consumer) {
+		this.build(consumer, QuantumMachinery.location("alloy_smelting/" + ForgeRegistries.ITEMS.getKey(this.result.getItem()).getPath()));
 	}
 
 	@Override
@@ -66,30 +66,20 @@ public class AlloySmeltingRecipeBuilder extends ModRecipeBuilder<AlloySmeltingRe
 
 		@Override
 		public void serialize(JsonObject json) {
-			JsonArray jsonarray = new JsonArray();
+			JsonArray ingredients = new JsonArray();
 
 			for (int i = 0; i < inputs.size(); i++) {
-
-					ItemStack item = inputs.get(i).getMatchingStacks()[0];
-					JsonObject jsonobjectR = new JsonObject();
-					jsonobjectR.addProperty("item", ForgeRegistries.ITEMS.getKey(item.getItem()).toString());
-					if (item.getCount() > 1) {
-						jsonobjectR.addProperty("count", item.getCount());
-					}
-
-					jsonarray.add(jsonobjectR);
+				ingredients.add(inputs.get(i).serialize());
 			}
 
-			json.add("ingredients", jsonarray);
+			json.add("ingredients", ingredients);
 
 			JsonObject jsonobjectR = new JsonObject();
 			jsonobjectR.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem()).toString());
 			if (result.getCount() > 1) {
 				jsonobjectR.addProperty("count", result.getCount());
 			}
-
 			json.add("result", jsonobjectR);
-
 			json.addProperty("ticks", ticks);
 		}
 	}

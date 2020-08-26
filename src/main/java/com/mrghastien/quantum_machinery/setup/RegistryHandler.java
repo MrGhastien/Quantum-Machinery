@@ -5,6 +5,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
@@ -17,6 +18,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.mrghastien.quantum_machinery.QuantumMachinery;
+import com.mrghastien.quantum_machinery.api.common.crafting.ItemStackIngredient;
+import com.mrghastien.quantum_machinery.api.common.crafting.ModRecipeType;
 import com.mrghastien.quantum_machinery.common.init.ModBlocks;
 import com.mrghastien.quantum_machinery.common.init.ModContainers;
 import com.mrghastien.quantum_machinery.common.init.ModItems;
@@ -24,7 +27,6 @@ import com.mrghastien.quantum_machinery.common.init.ModRecipes;
 import com.mrghastien.quantum_machinery.common.init.ModTileEntities;
 import com.mrghastien.quantum_machinery.common.multiblocks.MultiBlockHandler;
 import com.mrghastien.quantum_machinery.common.multiblocks.fission.FissionMultiBlock;
-import com.mrghastien.quantum_machinery.common.recipes.ModRecipeType;
 
 /**A class handling registration
  * <p> Handles BlockItems registration automatically
@@ -78,10 +80,11 @@ public final class RegistryHandler {
 	*/
 
 	@SubscribeEvent
-	public static void registerDataSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
+	public static void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
 		//Recipe Serializers
 		ModRecipeType.registerTypes(event.getRegistry());
-		LOGGER.info("Data serializers registered");
+		CraftingHelper.register(ItemStackIngredient.Serializer.ID, ItemStackIngredient.Serializer.INSTANCE);
+		LOGGER.info("Recipe serializers registered");
 	}
 	
 	public static ResourceLocation location(String name) {

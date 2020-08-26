@@ -52,8 +52,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 		baseItem(ModItems.ASTRONIUM_SHOVEL.get());
 		baseItem(ModItems.ASTRONIUM_SWORD.get());
 		baseItem(ModItems.BATTERY.get());
-		baseItem(ModItems.CATERIUM_INGOT.get());
-		baseItem(ModItems.CATERIUM_NUGGET.get());
 		baseItem(ModItems.COAL_DUST.get());
 	}
 	

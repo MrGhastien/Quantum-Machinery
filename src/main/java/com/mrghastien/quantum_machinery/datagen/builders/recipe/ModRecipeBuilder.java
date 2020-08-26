@@ -1,12 +1,5 @@
 package com.mrghastien.quantum_machinery.datagen.builders.recipe;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.ICriterionInstance;
@@ -18,6 +11,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public abstract class ModRecipeBuilder<T extends ModRecipeBuilder<T>> {
 
@@ -43,12 +43,12 @@ public abstract class ModRecipeBuilder<T extends ModRecipeBuilder<T>> {
 	
 	protected abstract Result getResult(ResourceLocation id);
 	
-	public void build(Consumer<IFinishedRecipe> consumerIn, ResourceLocation id) {
+	public void build(Consumer<IFinishedRecipe> consumer, ResourceLocation id) {
 		this.validate(id);
 		this.advancementBuilder.withParentId(new ResourceLocation("recipes/root"))
 				.withCriterion("has_the_recipe", new RecipeUnlockedTrigger.Instance(id))
 				.withRewards(AdvancementRewards.Builder.recipe(id)).withRequirementsStrategy(IRequirementsStrategy.OR);
-		consumerIn.accept(getResult(id));
+		consumer.accept(getResult(id));
 	}
 	
 	protected void validate(ResourceLocation id) {
@@ -70,6 +70,7 @@ public abstract class ModRecipeBuilder<T extends ModRecipeBuilder<T>> {
 		@Override
 		public JsonObject getRecipeJson() {
 			JsonObject json = new JsonObject();
+			json.addProperty("type", ForgeRegistries.RECIPE_SERIALIZERS.getKey(this.getSerializer()).toString());
 			if(!conditions.isEmpty()) {
 				JsonArray array = new JsonArray();
 				for (ICondition condition : conditions) {
@@ -102,8 +103,5 @@ public abstract class ModRecipeBuilder<T extends ModRecipeBuilder<T>> {
 		public ResourceLocation getAdvancementID() {
 			return advancementId;
 		}
-		
-	}
-	
-	
+	}	
 }

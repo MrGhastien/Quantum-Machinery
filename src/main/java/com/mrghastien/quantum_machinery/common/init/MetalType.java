@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import com.mrghastien.quantum_machinery.common.blocks.MetalBlock;
 import com.mrghastien.quantum_machinery.common.blocks.ModOreBlock;
-import com.mrghastien.quantum_machinery.util.helpers.ItemHelper;
+import com.mrghastien.quantum_machinery.util.ItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

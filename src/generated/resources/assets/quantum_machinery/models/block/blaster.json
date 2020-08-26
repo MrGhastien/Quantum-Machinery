@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "quantum_machinery:block/blaster_top",
+    "up": "quantum_machinery:block/blaster_top",
+    "north": "quantum_machinery:block/blaster_front",
+    "south": "quantum_machinery:block/blaster_side",
+    "east": "quantum_machinery:block/blaster_side",
+    "west": "quantum_machinery:block/blaster_side"
+  }
+}
