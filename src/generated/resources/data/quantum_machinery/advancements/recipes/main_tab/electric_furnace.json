@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "quantum_machinery:electric_furnace"
+    ]
+  },
+  "criteria": {
+    "electric_furnace": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "quantum_machinery:electric_furnace"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "quantum_machinery:electric_furnace"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "electric_furnace",
+      "has_the_recipe"
+    ]
+  ]
+}

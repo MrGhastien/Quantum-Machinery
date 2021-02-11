@@ -10,6 +10,7 @@
     }
   },
   "result": {
-    "item": "quantum_machinery:screw"
+    "item": "quantum_machinery:screw",
+    "count": 8
   }
 }

@@ -1,13 +1,33 @@
 modLoader="javafml" #mandatory
-loaderVersion="[28,)" #mandatory (24 is current forge version)
+loaderVersion="[33,)" #mandatory
+license="All rights reserved"
 
 [[mods]] #mandatory
 modId="quantum_machinery" #mandatory
-version="0.0.5.1" #mandatory
+version="${file.jarVersion}" #mandatory
 displayName="Quantum Machinery" #mandatory
-displayURL="" #optional
+displayURL="https://github.com/MrGhastien/Quantum-Machinery"
 credits="lul" #optional
 authors="MrGhastien" #optional
 description='''
 A tiny mod
 '''
+
+[[dependencies.quantum_machinery]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[33,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+    
+[[dependencies.quantum_machinery]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.2]"
+    ordering="NONE"
+    side="BOTH"
