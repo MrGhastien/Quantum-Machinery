@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SFS",
+    "TMT",
+    "SHS"
+  ],
+  "key": {
+    "S": {
+      "item": "quantum_machinery:screw"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "T": {
+      "tag": "forge:ingots/steel"
+    },
+    "M": {
+      "item": "quantum_machinery:machine_casing"
+    },
+    "H": {
+      "item": "minecraft:smooth_stone"
+    }
+  },
+  "result": {
+    "item": "quantum_machinery:electric_furnace"
+  }
+}
